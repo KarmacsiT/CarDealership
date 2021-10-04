@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>MQ7GIA_HFT_2021221_Data</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MQ7GIA_HFT_2021221 Models\MQ7GIA_HFT_2021221 Models.csproj" />
+  </ItemGroup>
+
+</Project>
