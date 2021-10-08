@@ -9,11 +9,21 @@ using System.Threading.Tasks;
 namespace MQ7GIA_HFT_2021221_Models
 {
     [Table("Departments")]
-    class Departments
+    public class Departments
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DepartmentID { get; set; }
+        [Required]
         public string DepartmentName { get; set; }
+        [Required]
         public string Address { get; set; }
+
+        public virtual ICollection<Cars> CarCollection { get; set; }
+
+        public Departments()
+        {
+            CarCollection = new HashSet<Cars>();
+        }
     }
 }
