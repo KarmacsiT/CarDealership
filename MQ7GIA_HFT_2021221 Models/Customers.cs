@@ -26,6 +26,6 @@ namespace MQ7GIA_HFT_2021221_Models
 
         [Required]
         [MaxLength(12)]
-        public int PhoneNumber { get; set; }
+        public long PhoneNumber { get; set; }
     }
 }

@@ -25,12 +25,17 @@ namespace MQ7GIA_HFT_2021221_Models
         public string LicensePlate { get; set; }
 
         public int? Warranty { get; set; }
-
         [Required]
         public string EngineDisplacement { get; set; }
 
         [Required]
         public string FuelType { get; set; }
+
+        [Required]
+        public int HorsePower { get; set; }
+
+        [Required]
+        public string Transmission { get; set; }
 
         [Required]
         public int Odometer { get; set; }
