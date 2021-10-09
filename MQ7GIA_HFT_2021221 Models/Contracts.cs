@@ -15,11 +15,13 @@ namespace MQ7GIA_HFT_2021221_Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ContractID { get; set; }
 
-        public string ContractType { get; set; }
+        [Required]
+        public string ContractType { get; set; } //Contract Types: Lease, Sell
 
+        [Required]
         public DateTime ContractDate { get; set; }
 
-        public DateTime? ContractExpireDate { get; set; }
+        public DateTime? ContractExpiryDate { get; set; } //Expiry Date of Lease Contracts
 
 
         [NotMapped]

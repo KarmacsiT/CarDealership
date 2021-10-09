@@ -16,16 +16,17 @@ namespace MQ7GIA_HFT_2021221_Models
         public int CustomerID { get; set; }
 
         [Required]
+        [MaxLength(20)]
         public string FirstName { get; set; }
 
         [Required]
         public string LastName { get; set; }
 
         [Required]
-        public string Email { get; set; }
+        public string Email { get; set; } //Fictional email address and email providers
 
         [Required]
-        [MaxLength(12)]
-        public long PhoneNumber { get; set; }
+        [MaxLength(11)]
+        public long PhoneNumber { get; set; } //Fictional 11Digit phonenumbers
     }
 }

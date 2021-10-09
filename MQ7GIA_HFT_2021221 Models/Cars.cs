@@ -24,9 +24,9 @@ namespace MQ7GIA_HFT_2021221_Models
         [Required]
         public string LicensePlate { get; set; }
 
-        public int? Warranty { get; set; }
-        [Required]
-        public string EngineDisplacement { get; set; }
+        public int? Warranty { get; set; } //Warranty measured in years
+
+        public double? EngineDisplacement { get; set; }
 
         [Required]
         public string FuelType { get; set; }
@@ -43,10 +43,10 @@ namespace MQ7GIA_HFT_2021221_Models
         public DateTime? MOTUntil { get; set; }
 
         [Required]
-        public int LeasePrice { get; set; }
+        public int LeasePrice { get; set; } //Lease Price per mounth in HUF(Ft) [based of Használtautó.hu data and common sense]
 
         [Required]
-        public int SellingPrice { get; set; }
+        public int SellingPrice { get; set; } //Selling price in HUF(Ft) [based of Használtautó.hu data and common sense]
 
 
         [NotMapped]

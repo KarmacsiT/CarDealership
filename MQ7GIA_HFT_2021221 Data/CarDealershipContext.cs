@@ -35,22 +35,21 @@ namespace MQ7GIA_HFT_2021221_Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             Cars c1 = new Cars
             {
                 CarID = 1,
-                CarBrand = "Volkswagen",
-                CarModell = "Passat",
-                LicensePlate = "PRK-696",
-                Warranty = 1,
-                EngineDisplacement = "2.0",
-                FuelType = "Diesel",
-                HorsePower = 150,
-                Transmission = "Manual",
-                Odometer = 160000,
-                MOTUntil = DateTime.Parse("2022.02.15"),
-                LeasePrice = 55000,
-                SellingPrice = 7000000
+                CarBrand = "Tesla",
+                CarModell = "Model Y",
+                LicensePlate = "MON-322",
+                Warranty = 3,
+                EngineDisplacement = null,
+                FuelType = "Petrol",
+                HorsePower = 140,
+                Transmission = "Automatic",
+                Odometer = 52489,
+                MOTUntil = DateTime.Parse("2022.03.30"),
+                LeasePrice = 1500000,
+                SellingPrice = 23500000
             };
 
             Cars c2 = new Cars
@@ -60,13 +59,13 @@ namespace MQ7GIA_HFT_2021221_Data
                 CarModell = "Leon",
                 LicensePlate = "SUN-732",
                 Warranty = 2,
-                EngineDisplacement = "2.0",
+                EngineDisplacement = 2.0,
                 FuelType = "Petrol",
                 HorsePower = 250,
                 Transmission = "Automatic",
                 Odometer = 62321,
                 MOTUntil = DateTime.Parse("2021.12.02"),
-                LeasePrice = 70000,
+                LeasePrice = 200000,
                 SellingPrice = 10000000
             };
 
@@ -77,14 +76,14 @@ namespace MQ7GIA_HFT_2021221_Data
                 CarModell = "Leaf",
                 LicensePlate = "ECO-420",
                 Warranty = 2,
-                EngineDisplacement = "-", //Electric motors have no displacement
+                EngineDisplacement = null, //Electric motors have no displacement
                 FuelType = "Electric",
                 HorsePower = 147,
                 Transmission = "Automatic",
                 Odometer = 30000,
                 MOTUntil = null,    //MOT expired
-                LeasePrice = 45000,
-                SellingPrice = 5500000
+                LeasePrice = 155000,
+                SellingPrice = 6700000
             };
 
             Cars c4 = new Cars
@@ -94,13 +93,13 @@ namespace MQ7GIA_HFT_2021221_Data
                 CarModell = "X6",
                 LicensePlate = "POS-368",
                 Warranty = null,            //Warranty expired
-                EngineDisplacement = "2.0",
+                EngineDisplacement = 2.0,
                 FuelType = "Diesel",
                 HorsePower = 286,
                 Transmission = "Automatic",
                 Odometer = 85321,
                 MOTUntil = DateTime.Parse("2022.01.20"),
-                LeasePrice = 80000,
+                LeasePrice = 250000,
                 SellingPrice = 15000000
             };
 
@@ -111,13 +110,13 @@ namespace MQ7GIA_HFT_2021221_Data
                 CarModell = "Mustang",
                 LicensePlate = "CEO-500",
                 Warranty = 4,
-                EngineDisplacement = "5.0",
+                EngineDisplacement = 5.0,
                 FuelType = "Petrol",
                 HorsePower = 420,
                 Transmission = "Automatic",
                 Odometer = 10000,
                 MOTUntil = DateTime.Parse("2022.05.20"),
-                LeasePrice = 120000,
+                LeasePrice = 270000,
                 SellingPrice = 16000000
             };
 
@@ -128,13 +127,13 @@ namespace MQ7GIA_HFT_2021221_Data
                 CarModell = "Fabia",
                 LicensePlate = "NAH-247",
                 Warranty = 1,
-                EngineDisplacement = "1.2",
+                EngineDisplacement = 1.2,
                 FuelType = "Petrol",
                 HorsePower = 110,
                 Transmission = "Manual",
                 Odometer = 69852,
                 MOTUntil = DateTime.Parse("2021.10.10"),
-                LeasePrice = 25000,
+                LeasePrice = 90000,
                 SellingPrice = 3000000
             };
 
@@ -145,13 +144,13 @@ namespace MQ7GIA_HFT_2021221_Data
                 CarModell = "A5",
                 LicensePlate = "FAM-696",
                 Warranty = 1,
-                EngineDisplacement = "3.0",
+                EngineDisplacement = 3.0,
                 FuelType = "Diesel",
                 HorsePower = 240,
                 Transmission = "Automatic",
                 Odometer = 84563,
                 MOTUntil = DateTime.Parse("2022.02.08"),
-                LeasePrice = 90000,
+                LeasePrice = 190000,
                 SellingPrice = 9000000
             };
 
@@ -162,13 +161,13 @@ namespace MQ7GIA_HFT_2021221_Data
                 CarModell = "I30N",
                 LicensePlate = "JAP-147",
                 Warranty = 1,
-                EngineDisplacement = "2.0",
+                EngineDisplacement = 2.0,
                 FuelType = "Petrol",
                 HorsePower = 275,
                 Transmission = "Manual",
                 Odometer = 47516,
                 MOTUntil = DateTime.Parse("2021.11.11"),
-                LeasePrice = 85000,
+                LeasePrice = 195000,
                 SellingPrice = 9300000
             };
 
@@ -179,31 +178,31 @@ namespace MQ7GIA_HFT_2021221_Data
                 CarModell = "Vitara",
                 LicensePlate = "ZOK-159",
                 Warranty = 6,
-                EngineDisplacement = "1.4",
+                EngineDisplacement = 1.4,
                 FuelType = "Petrol",
                 HorsePower = 140,
                 Transmission = "Automatic",
                 Odometer = 67451,
                 MOTUntil = DateTime.Parse("2021.12.30"),
-                LeasePrice = 56000,
+                LeasePrice = 150000,
                 SellingPrice = 6000000
             };
 
             Cars c10 = new Cars
             {
                 CarID = 10,
-                CarBrand = "Tesla",
-                CarModell = "Model Y",
-                LicensePlate = "MON-322",
-                Warranty = 3,
-                EngineDisplacement = "-",
-                FuelType = "Petrol",
-                HorsePower = 140,
-                Transmission = "Automatic",
-                Odometer = 67451,
-                MOTUntil = DateTime.Parse("2021.12.30"),
-                LeasePrice = 56000,
-                SellingPrice = 6000000
+                CarBrand = "Volkswagen",
+                CarModell = "Passat",
+                LicensePlate = "PRK-696",
+                Warranty = 1,
+                EngineDisplacement = 2.0,
+                FuelType = "Diesel",
+                HorsePower = 150,
+                Transmission = "Manual",
+                Odometer = 160000,
+                MOTUntil = DateTime.Parse("2022.02.15"),
+                LeasePrice = 160000,
+                SellingPrice = 7000000
             };
 
 
@@ -214,7 +213,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 FirstName = "Elon",
                 LastName = "Musk",
                 Email = "dodgecoin@teslamotors.com",
-                PhoneNumber = 2025550299
+                PhoneNumber = 16505130514
             };
 
             Customers p2 = new Customers
@@ -223,7 +222,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 FirstName = "Bill",
                 LastName = "Baller",
                 Email = "corporate@bs.com",
-                PhoneNumber = 2025550162
+                PhoneNumber = 18962358544
             };
 
             Customers p3 = new Customers
@@ -232,7 +231,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 FirstName = "Thomas",
                 LastName = "Thunder",
                 Email = "thunder@strike.com",
-                PhoneNumber = 2025850163
+                PhoneNumber = 13052478786
             };
 
             Customers p4 = new Customers
@@ -241,7 +240,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 FirstName = "Karen",
                 LastName = "Commander",
                 Email = "speaking@manager.com",
-                PhoneNumber = 2025550008
+                PhoneNumber = 16964767780
             };
 
             Customers p5 = new Customers
@@ -250,7 +249,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 FirstName = "Fred",
                 LastName = "Fratboy",
                 Email = "free@beer.io",
-                PhoneNumber = 2023570007
+                PhoneNumber = 16487205302
             };
 
             Customers p6 = new Customers
@@ -259,7 +258,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 FirstName = "Sally",
                 LastName = "Spiritual",
                 Email = "yoga@mania.com",
-                PhoneNumber = 2021540067
+                PhoneNumber = 17154801567
             };
 
             Customers p7 = new Customers
@@ -268,7 +267,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 FirstName = "Paula",
                 LastName = "Poser",
                 Email = "follow@insta.com",
-                PhoneNumber = 2723514727
+                PhoneNumber = 18187827055
             };
 
             Customers p8 = new Customers
@@ -277,7 +276,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 FirstName = "Simon",
                 LastName = "Sideways",
                 Email = "fullsend@drift.com",
-                PhoneNumber = 2743584421
+                PhoneNumber = 12414558332
             };
 
             Customers p9 = new Customers
@@ -286,7 +285,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 FirstName = "Chad",
                 LastName = "Charming",
                 Email = "shees@bro.com",
-                PhoneNumber = 2781675340
+                PhoneNumber = 12279330598
             };
 
             Customers p10 = new Customers
@@ -295,7 +294,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 FirstName = "Chris",
                 LastName = "Cosmic",
                 Email = "supersonic@speed.com",
-                PhoneNumber = 3672564181
+                PhoneNumber = 12093581825
             };
 
 
@@ -319,7 +318,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 ContractID = 1,
                 ContractType = "Lease",
                 ContractDate = DateTime.Parse("2020.05.12"),
-                ContractExpireDate = DateTime.Parse("2023.12.15")
+                ContractExpiryDate = DateTime.Parse("2023.12.15")
             };
 
             Contracts con2 = new Contracts
@@ -327,7 +326,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 ContractID = 2,
                 ContractType = "Sell",
                 ContractDate = DateTime.Parse("2020.05.12"),
-                ContractExpireDate = null
+                ContractExpiryDate = null
             };
 
             Contracts con3 = new Contracts
@@ -335,7 +334,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 ContractID = 3,
                 ContractType = "Lease",
                 ContractDate = DateTime.Parse("2021.06.08"),
-                ContractExpireDate = DateTime.Parse("2023.04.02")
+                ContractExpiryDate = DateTime.Parse("2023.04.02")
             };
 
             Contracts con4 = new Contracts
@@ -343,7 +342,7 @@ namespace MQ7GIA_HFT_2021221_Data
                 ContractID = 4,
                 ContractType = "Sell",
                 ContractDate = DateTime.Parse("2020.01.17"),
-                ContractExpireDate = null
+                ContractExpiryDate = null
             };
 
             Contracts con5 = new Contracts
@@ -351,47 +350,47 @@ namespace MQ7GIA_HFT_2021221_Data
                 ContractID = 5,
                 ContractType = "Lease",
                 ContractDate = DateTime.Parse("2019.05.07"),
-                ContractExpireDate = DateTime.Parse("2020.02.20")
+                ContractExpiryDate = DateTime.Parse("2020.02.20")
             };
 
             Contracts con6 = new Contracts
             {
                 ContractID = 6,
-                ContractType = "Lease",
-                ContractDate = DateTime.Parse("2021.09.01"),
-                ContractExpireDate = DateTime.Parse("2021.12.15")
+                ContractType = "Sell",
+                ContractDate = DateTime.Parse("2021.10.08"),
+                ContractExpiryDate = null
             };
 
             Contracts con7 = new Contracts
             {
                 ContractID = 7,
-                ContractType = "Sell",
-                ContractDate = DateTime.Parse("2021.10.21"),
-                ContractExpireDate = null
+                ContractType = "Lease",
+                ContractDate = DateTime.Parse("2021.09.01"),
+                ContractExpiryDate = DateTime.Parse("2021.12.15")
             };
 
             Contracts con8 = new Contracts
             {
                 ContractID = 8,
-                ContractType = "Lease",
-                ContractDate = DateTime.Parse("2018.07.17"),
-                ContractExpireDate = DateTime.Parse("2022.11.25")
+                ContractType = "Sell",
+                ContractDate = DateTime.Parse("2021.10.21"),
+                ContractExpiryDate = null
             };
 
             Contracts con9 = new Contracts
             {
                 ContractID = 9,
-                ContractType = "Sell",
-                ContractDate = DateTime.Parse("2017.01.30"),
-                ContractExpireDate = null
+                ContractType = "Lease",
+                ContractDate = DateTime.Parse("2018.07.17"),
+                ContractExpiryDate = DateTime.Parse("2022.11.25")
             };
 
             Contracts con10 = new Contracts
             {
                 ContractID = 10,
-                ContractType = "Lease",
-                ContractDate = DateTime.Parse("2021.10.08"),
-                ContractExpireDate = DateTime.Parse("2020.02.20")
+                ContractType = "Sell",
+                ContractDate = DateTime.Parse("2017.01.30"),
+                ContractExpiryDate = null
             };
 
             //--------------------------------------------------------------//
@@ -417,6 +416,18 @@ namespace MQ7GIA_HFT_2021221_Data
             con8.CustomerID = p8.CustomerID;
             con9.CustomerID = p9.CustomerID;
             con10.CustomerID = p10.CustomerID;
+
+            c1.DepartmentID = d1.DepartmentID;
+            c2.DepartmentID = d2.DepartmentID;
+            c3.DepartmentID = d1.DepartmentID;
+            c4.DepartmentID = d2.DepartmentID;
+            c5.DepartmentID = d1.DepartmentID;
+            c6.DepartmentID = d2.DepartmentID;
+            c7.DepartmentID = d1.DepartmentID;
+            c8.DepartmentID = d2.DepartmentID;
+            c9.DepartmentID = d1.DepartmentID;
+            c10.DepartmentID = d2.DepartmentID;
+
 
             //--------------------------------------------------------------//
 
