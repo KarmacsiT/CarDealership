@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MQ7GIA_HFT_2021221_Endpoint
+namespace MQ7GIA_HFT_2021221.Endpoint
 {
     public class Program
     {

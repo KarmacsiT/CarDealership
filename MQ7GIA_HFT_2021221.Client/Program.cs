@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Client
+namespace MQ7GIA_HFT_2021221.Client
 {
     class Program
     {

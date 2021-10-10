@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MQ7GIA_HFT_2021221_Models;
+using MQ7GIA_HFT_2021221.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MQ7GIA_HFT_2021221_Data
+namespace MQ7GIA_HFT_2021221.Data
 {
     class CarDealershipContext : DbContext
     {

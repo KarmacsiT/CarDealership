@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MQ7GIA_HFT_2021221_Logic
+namespace MQ7GIA_HFT_2021221.Logic
 {
     public class Class1
     {

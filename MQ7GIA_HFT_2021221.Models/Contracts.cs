@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MQ7GIA_HFT_2021221_Models
+namespace MQ7GIA_HFT_2021221.Models
 {
     [Table("Contracts")]
     public class Contracts
