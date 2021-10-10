@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MQ7GIA_HFT_2021221 Models\MQ7GIA_HFT_2021221 Models.csproj" />
-    <ProjectReference Include="..\MQ7GIA_HFT_2021221 Repository\MQ7GIA_HFT_2021221 Repository.csproj" />
+    <ProjectReference Include="..\MQ7GIA_HFT_2021221 Models\MQ7GIA_HFT_2021221.Models.csproj" />
+    <ProjectReference Include="..\MQ7GIA_HFT_2021221 Repository\MQ7GIA_HFT_2021221.Repository.csproj" />
   </ItemGroup>
 
 </Project>
