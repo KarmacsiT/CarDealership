@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MQ7GIA_HFT_2021221.Data
 {
-    class CarDealershipContext : DbContext
+    public class CarDealershipContext : DbContext
     {
         public virtual DbSet<Cars> Cars { get; set; }
         public virtual DbSet<Contracts> Contracts { get; set; }
@@ -26,9 +26,9 @@ namespace MQ7GIA_HFT_2021221.Data
             {
                 optionsBuilder
                 .UseLazyLoadingProxies()
-                .UseSqlServer(@"Data Source = (LocalDB)
-                 \MSSQLLocalDB; AttachDbFilename =|DataDirectory|
-                 \CarDatabase.mdf; Integrated Security = True");
+                .UseSqlServer(@"Data Source = (LocalDB)\MSSQLLocalDB; 
+                 AttachDbFilename = |DataDirectory|\CarDealershipDB.mdf;
+                 Integrated Security = True");
             }
 
         }
@@ -307,7 +307,7 @@ namespace MQ7GIA_HFT_2021221.Data
 
             Departments d2 = new Departments
             {
-                DepartmentID = 1,
+                DepartmentID = 2,
                 DepartmentName = "SavySellers Solution",
                 Address = "2789 Market St. 58"
             };

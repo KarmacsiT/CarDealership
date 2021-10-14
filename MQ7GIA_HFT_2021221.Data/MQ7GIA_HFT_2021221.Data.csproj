@@ -6,15 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="CarDatabase.mdf" />
-    <None Remove="CarDatabase_log.ldf" />
+    <None Remove="CarDealershipDB.mdf" />
+    <None Remove="CarDealershipDB_log.ldf" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="CarDatabase.mdf">
+    <Content Include="CarDealershipDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CarDatabase_log.ldf">
+    <Content Include="CarDealershipDB_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
