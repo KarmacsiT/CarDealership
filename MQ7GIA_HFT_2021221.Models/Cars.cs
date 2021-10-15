@@ -38,7 +38,7 @@ namespace MQ7GIA_HFT_2021221.Models
         public string Transmission { get; set; }
 
         [Required]
-        public int Odometer { get; set; }
+        public int Mileage { get; set; }
 
         public DateTime? MOTUntil { get; set; }
 

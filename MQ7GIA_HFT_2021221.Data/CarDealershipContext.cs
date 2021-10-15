@@ -15,7 +15,6 @@ namespace MQ7GIA_HFT_2021221.Data
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Departments> Departments { get; set; }
 
-
         public CarDealershipContext()
         {
             this.Database.EnsureCreated();
@@ -46,7 +45,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 FuelType = "Petrol",
                 HorsePower = 140,
                 Transmission = "Automatic",
-                Odometer = 52489,
+                Mileage = 52489,
                 MOTUntil = DateTime.Parse("2022.03.30"),
                 LeasePrice = 1500000,
                 SellingPrice = 23500000
@@ -63,7 +62,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 FuelType = "Petrol",
                 HorsePower = 250,
                 Transmission = "Automatic",
-                Odometer = 62321,
+                Mileage = 62321,
                 MOTUntil = DateTime.Parse("2021.12.02"),
                 LeasePrice = 200000,
                 SellingPrice = 10000000
@@ -80,7 +79,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 FuelType = "Electric",
                 HorsePower = 147,
                 Transmission = "Automatic",
-                Odometer = 30000,
+                Mileage = 30000,
                 MOTUntil = null,    //MOT expired
                 LeasePrice = 155000,
                 SellingPrice = 6700000
@@ -97,7 +96,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 FuelType = "Diesel",
                 HorsePower = 286,
                 Transmission = "Automatic",
-                Odometer = 85321,
+                Mileage = 85321,
                 MOTUntil = DateTime.Parse("2022.01.20"),
                 LeasePrice = 250000,
                 SellingPrice = 15000000
@@ -114,7 +113,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 FuelType = "Petrol",
                 HorsePower = 420,
                 Transmission = "Automatic",
-                Odometer = 10000,
+                Mileage = 10000,
                 MOTUntil = DateTime.Parse("2022.05.20"),
                 LeasePrice = 270000,
                 SellingPrice = 16000000
@@ -131,7 +130,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 FuelType = "Petrol",
                 HorsePower = 110,
                 Transmission = "Manual",
-                Odometer = 69852,
+                Mileage = 69852,
                 MOTUntil = DateTime.Parse("2021.10.10"),
                 LeasePrice = 90000,
                 SellingPrice = 3000000
@@ -148,7 +147,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 FuelType = "Diesel",
                 HorsePower = 240,
                 Transmission = "Automatic",
-                Odometer = 84563,
+                Mileage = 84563,
                 MOTUntil = DateTime.Parse("2022.02.08"),
                 LeasePrice = 190000,
                 SellingPrice = 9000000
@@ -165,7 +164,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 FuelType = "Petrol",
                 HorsePower = 275,
                 Transmission = "Manual",
-                Odometer = 47516,
+                Mileage = 47516,
                 MOTUntil = DateTime.Parse("2021.11.11"),
                 LeasePrice = 195000,
                 SellingPrice = 9300000
@@ -182,7 +181,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 FuelType = "Petrol",
                 HorsePower = 140,
                 Transmission = "Automatic",
-                Odometer = 67451,
+                Mileage = 67451,
                 MOTUntil = DateTime.Parse("2021.12.30"),
                 LeasePrice = 150000,
                 SellingPrice = 6000000
@@ -199,7 +198,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 FuelType = "Diesel",
                 HorsePower = 150,
                 Transmission = "Manual",
-                Odometer = 160000,
+                Mileage = 160000,
                 MOTUntil = DateTime.Parse("2022.02.15"),
                 LeasePrice = 160000,
                 SellingPrice = 7000000
