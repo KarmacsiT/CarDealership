@@ -34,6 +34,8 @@ namespace MQ7GIA_HFT_2021221.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            #region Data feeding  
+            
             Cars c1 = new Cars
             {
                 CarID = 1,
@@ -42,7 +44,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 LicensePlate = "MON-322",
                 Warranty = 3,
                 EngineDisplacement = null,
-                FuelType = "Petrol",
+                FuelType = "Electric",
                 HorsePower = 140,
                 Transmission = "Automatic",
                 Mileage = 52489,
@@ -227,9 +229,9 @@ namespace MQ7GIA_HFT_2021221.Data
             Customers p3 = new Customers
             {
                 CustomerID = 3,
-                FirstName = "Thomas",
-                LastName = "Thunder",
-                Email = "thunder@strike.com",
+                FirstName = "Lorem",
+                LastName = "Ipsum",
+                Email = "dolor@sit_amet.com",
                 PhoneNumber = 13052478786
             };
 
@@ -392,6 +394,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 ContractExpiryDate = null
             };
 
+            #endregion
             //--------------------------------------------------------------//
 
             con1.CarID = c1.CarID;

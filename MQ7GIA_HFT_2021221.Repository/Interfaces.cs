@@ -31,6 +31,7 @@ namespace MQ7GIA_HFT_2021221.Repository
         void ChangeMOT(int id, string newMOT); //In case the MOT expires we can set it to null
 
         void DeleteCar(int id);
+    
     }
 
 //-------------------------------------------------------------------------//
@@ -43,6 +44,7 @@ namespace MQ7GIA_HFT_2021221.Repository
         void ChangePhonenumber(int id, long newPhonenumber);
         
         void DeleteCustomer(int id);
+    
     }
  //-------------------------------------------------------------------------------//   
     
@@ -53,6 +55,7 @@ namespace MQ7GIA_HFT_2021221.Repository
         void ChangeContractExpiryDate(int id, string newContractExpiryDate);
 
         void DeleteContract(int id);
+
     }
 
 //----------------------------------------------------------------------------------//    

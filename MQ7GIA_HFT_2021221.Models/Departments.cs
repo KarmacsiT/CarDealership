@@ -19,6 +19,7 @@ namespace MQ7GIA_HFT_2021221.Models
         [Required]
         public string Address { get; set; }
 
+        [NotMapped]
         public virtual ICollection<Cars> CarCollection { get; set; }
 
         public Departments()

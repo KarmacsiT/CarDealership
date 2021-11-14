@@ -28,5 +28,8 @@ namespace MQ7GIA_HFT_2021221.Models
         [Required]
         [MaxLength(11)]
         public long PhoneNumber { get; set; } //Fictional 11Digit phonenumbers
+
+        [NotMapped]
+        public virtual Customers customer { get; set; }
     }
 }
