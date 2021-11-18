@@ -187,6 +187,88 @@ namespace MQ7GIA_HFT_2021221.Test
             //Act + Assert
             Assert.That(carsLogic.CustomersWithoutWarranty().Count() == 2, Is.True);
         }
+        
+        [TestCase(1)]
+        public void CarsOnThisDepartment_IsNotEmpty(int DepartmentID)
+        {
+            Mock<ICarsRepository> carsRepoMock = new Mock<ICarsRepository>();
+            Mock<IDepartmentsRepository> departmentsRepoMock = new Mock<IDepartmentsRepository>();
+            List<Cars> CarsFillerList = new List<Cars>();
+            DepartmentsLogic departmentsLogic = new DepartmentsLogic(departmentsRepoMock.Object, carsRepoMock.Object);
 
+            #region Adding Mock Data
+            Cars c1 = new Cars
+            {
+                CarID = 1,
+                CarBrand = "Some Brand",
+                CarModell = "Some Modell",
+                LicensePlate = "ASD-123",
+                Warranty = null,
+                EngineDisplacement = null,
+                FuelType = "Electric",
+                HorsePower = 140,
+                Transmission = "Automatic",
+                Mileage = 52489,
+                MOTUntil = DateTime.Parse("2022.03.30"),
+                LeasePrice = 1500000,
+                SellingPrice = 23500000,
+                //Foreign key
+                DepartmentID = 1
+            };
+
+            Cars c2 = new Cars
+            {
+                CarID = 2,
+                CarBrand = "Some Brand",
+                CarModell = "Some Modell",
+                LicensePlate = "ASD-123",
+                Warranty = 1,
+                EngineDisplacement = null,
+                FuelType = "Electric",
+                HorsePower = 140,
+                Transmission = "Automatic",
+                Mileage = 52489,
+                MOTUntil = DateTime.Parse("2022.03.30"),
+                LeasePrice = 1500000,
+                SellingPrice = 23500000,
+                //Foreign key
+                DepartmentID = 2
+            };
+
+            Cars c3 = new Cars
+            {
+                CarID = 3,
+                CarBrand = "Some Brand",
+                CarModell = "Some Modell",
+                LicensePlate = "ASD-123",
+                Warranty = null,
+                EngineDisplacement = null,
+                FuelType = "Electric",
+                HorsePower = 140,
+                Transmission = "Automatic",
+                Mileage = 52489,
+                MOTUntil = DateTime.Parse("2022.03.30"),
+                LeasePrice = 1500000,
+                SellingPrice = 23500000,
+                //Foreign key
+                DepartmentID = 1
+            };
+
+            Departments d1 = new Departments
+            {
+                DepartmentID = 1,
+                DepartmentName = "Placeholder Department",
+                Address = "Placeholder Str. 404"
+            };
+
+            CarsFillerList.Add(c1);
+            CarsFillerList.Add(c2);
+            CarsFillerList.Add(c3);
+            #endregion
+
+            carsRepoMock.Setup(x => x.GetAll()).Returns(CarsFillerList.AsQueryable);
+
+            Assert.That(departmentsLogic.CarsOnThisDeparment(DepartmentID), Is.Not.Empty);
+        }
     }    
 }
