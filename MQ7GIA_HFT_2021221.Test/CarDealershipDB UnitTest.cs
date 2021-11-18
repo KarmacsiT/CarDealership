@@ -314,6 +314,67 @@ namespace MQ7GIA_HFT_2021221.Test
 
             Assert.That(contractsLogic.CustomerOfCar(customerID).FirstOrDefault().CustomerID, Is.EqualTo(customerID));
         }
+    
+        [TestCase(1)]
+        public void TotalLeaseExpenditureForCustomer_CalculatesPriceCorrectly(int customerID)
+        {
+            Mock<IContractsRepository> contractsRepoMock = new Mock<IContractsRepository>();
+            Mock<ICustomersRepository> customersRepoMock = new Mock<ICustomersRepository>();
+            Mock<ICarsRepository> carsRepoMock = new Mock<ICarsRepository>();
+            List<Contracts> ContractsFillerList = new List<Contracts>();
+            ContractsLogic contractsLogic = new ContractsLogic(contractsRepoMock.Object, customersRepoMock.Object, carsRepoMock.Object);
+
+            #region Adding Mock Data
+            Contracts con1 = new Contracts
+            {
+                ContractID = 1,
+                ContractType = "Lease",
+                ContractDate = DateTime.Parse("2020.05.12"),
+                ContractExpiryDate = DateTime.Parse("2020.07.12"),
+                //Foreign Key
+                CarID = 1,
+                CustomerID = 1,
+            };
+
+            Cars c1 = new Cars
+            {
+                CarID = 1,
+                CarBrand = "Some Brand",
+                CarModell = "Some Modell",
+                LicensePlate = "ASD-123",
+                Warranty = null,
+                EngineDisplacement = null,
+                FuelType = "Electric",
+                HorsePower = 140,
+                Transmission = "Automatic",
+                Mileage = 52489,
+                MOTUntil = DateTime.Parse("2022.03.30"),
+                LeasePrice = 150000,
+                SellingPrice = 23500000,
+                //Foreign key
+                DepartmentID = 1
+            };
+
+            Customers p1 = new Customers
+            {
+                CustomerID = 1,
+                FirstName = "Test",
+                LastName = "Person",
+                Email = "place@holder.com",
+                PhoneNumber = 16505130514,
+                ContractID = 1,
+                //Navigation Property
+                Contract = con1
+            };
+
+            ContractsFillerList.Add(con1);
+            #endregion
+            
+            contractsRepoMock.Setup(x => x.GetAll()).Returns(ContractsFillerList.AsQueryable);
+            carsRepoMock.Setup(x => x.GetOne(customerID)).Returns(c1);
+            
+            Assert.That(contractsLogic.TotalLeaseExpenditureForCustomer(customerID) == c1.LeasePrice * 2, Is.True);
+        }
     }
 }    
 

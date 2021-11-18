@@ -80,7 +80,7 @@ namespace MQ7GIA_HFT_2021221.Logic
 
             
             //Takes the number of mounths between the starting lease date and the lease expiry date and multiples it with the mounthly leasing price
-            return LeaseMonthDifference(SearchedContract.ContractDate, (DateTime)SearchedContract.ContractExpiryDate) * carsRepository.GetOne(SearchedContract.CarID).LeasePrice;
+            return LeaseMonthDifference((DateTime)SearchedContract.ContractExpiryDate, SearchedContract.ContractDate) * carsRepository.GetOne(SearchedContract.CarID).LeasePrice;
 
         }
 
