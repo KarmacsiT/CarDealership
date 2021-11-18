@@ -30,6 +30,9 @@ namespace MQ7GIA_HFT_2021221.Models
         public long PhoneNumber { get; set; } //Fictional 11Digit phonenumbers
 
         [NotMapped]
-        public virtual Customers customer { get; set; }
+        public virtual Contracts Contract { get; set; }
+        
+        [ForeignKey(nameof(Contracts))]
+        public int ContractID { get; set; }
     }
 }

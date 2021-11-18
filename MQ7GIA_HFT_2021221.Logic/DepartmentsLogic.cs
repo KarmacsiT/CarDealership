@@ -43,11 +43,9 @@ namespace MQ7GIA_HFT_2021221.Logic
         }
         public List<Cars> CarsOnThisDeparment(int departmentID) //multitable
         {
-            DepartmentsLogic departmentsLogic = new DepartmentsLogic(departmentsRepository, carsRepository);
-            List<Cars> AllCars = departmentsLogic.carsRepository.GetAll().ToList();
-           
-            return AllCars.Where(car => car.DepartmentID == departmentID).ToList();
+            List<Cars> AllCars = carsRepository.GetAll().ToList();
 
+            return AllCars.Where(car => car.DepartmentID == departmentID).ToList();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace MQ7GIA_HFT_2021221.Data
 
         public CarDealershipContext()
         {
-            this.Database.EnsureCreated();
+            this.Database?.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,8 +34,8 @@ namespace MQ7GIA_HFT_2021221.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            #region Data feeding  
-            
+            #region Data Seeding  
+
             Cars c1 = new Cars
             {
                 CarID = 1,
@@ -50,7 +50,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 Mileage = 52489,
                 MOTUntil = DateTime.Parse("2022.03.30"),
                 LeasePrice = 1500000,
-                SellingPrice = 23500000
+                SellingPrice = 23500000,
+                //Foreign Key
+                DepartmentID = 1
             };
 
             Cars c2 = new Cars
@@ -67,7 +69,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 Mileage = 62321,
                 MOTUntil = DateTime.Parse("2021.12.02"),
                 LeasePrice = 200000,
-                SellingPrice = 10000000
+                SellingPrice = 10000000,
+                //Foreign Key
+                DepartmentID = 2
             };
 
             Cars c3 = new Cars
@@ -84,7 +88,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 Mileage = 30000,
                 MOTUntil = null,    //MOT expired
                 LeasePrice = 155000,
-                SellingPrice = 6700000
+                SellingPrice = 6700000,
+                //Foreign Key
+                DepartmentID = 1
             };
 
             Cars c4 = new Cars
@@ -101,7 +107,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 Mileage = 85321,
                 MOTUntil = DateTime.Parse("2022.01.20"),
                 LeasePrice = 250000,
-                SellingPrice = 15000000
+                SellingPrice = 15000000,
+                //Foreign Key
+                DepartmentID = 2
             };
 
             Cars c5 = new Cars
@@ -118,7 +126,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 Mileage = 10000,
                 MOTUntil = DateTime.Parse("2022.05.20"),
                 LeasePrice = 270000,
-                SellingPrice = 16000000
+                SellingPrice = 16000000,
+                //Foreign Key
+                DepartmentID = 1
             };
 
             Cars c6 = new Cars
@@ -135,7 +145,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 Mileage = 69852,
                 MOTUntil = DateTime.Parse("2021.10.10"),
                 LeasePrice = 90000,
-                SellingPrice = 3000000
+                SellingPrice = 3000000,
+                //Foreign Key
+                DepartmentID = 2
             };
 
             Cars c7 = new Cars
@@ -152,7 +164,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 Mileage = 84563,
                 MOTUntil = DateTime.Parse("2022.02.08"),
                 LeasePrice = 190000,
-                SellingPrice = 9000000
+                SellingPrice = 9000000,
+                //Foreign Key
+                DepartmentID = 1
             };
 
             Cars c8 = new Cars
@@ -169,7 +183,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 Mileage = 47516,
                 MOTUntil = DateTime.Parse("2021.11.11"),
                 LeasePrice = 195000,
-                SellingPrice = 9300000
+                SellingPrice = 9300000,
+                //Foreign Key
+                DepartmentID = 2
             };
 
             Cars c9 = new Cars
@@ -186,7 +202,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 Mileage = 67451,
                 MOTUntil = DateTime.Parse("2021.12.30"),
                 LeasePrice = 150000,
-                SellingPrice = 6000000
+                SellingPrice = 6000000,
+                //Foreign Key
+                DepartmentID = 1
             };
 
             Cars c10 = new Cars
@@ -203,7 +221,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 Mileage = 160000,
                 MOTUntil = DateTime.Parse("2022.02.15"),
                 LeasePrice = 160000,
-                SellingPrice = 7000000
+                SellingPrice = 7000000,
+                //Foreign Key
+                DepartmentID = 2
             };
 
 
@@ -214,7 +234,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 FirstName = "Elon",
                 LastName = "Musk",
                 Email = "dodgecoin@teslamotors.com",
-                PhoneNumber = 16505130514
+                PhoneNumber = 16505130514,
+                //Foreign Key
+                ContractID = 1
             };
 
             Customers p2 = new Customers
@@ -223,7 +245,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 FirstName = "Bill",
                 LastName = "Baller",
                 Email = "corporate@bs.com",
-                PhoneNumber = 18962358544
+                PhoneNumber = 18962358544,
+                //Foreign Key
+                ContractID = 2
             };
 
             Customers p3 = new Customers
@@ -232,7 +256,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 FirstName = "Lorem",
                 LastName = "Ipsum",
                 Email = "dolor@sit_amet.com",
-                PhoneNumber = 13052478786
+                PhoneNumber = 13052478786,
+                //Foreign Key
+                ContractID = 3
             };
 
             Customers p4 = new Customers
@@ -241,7 +267,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 FirstName = "Karen",
                 LastName = "Commander",
                 Email = "speaking@manager.com",
-                PhoneNumber = 16964767780
+                PhoneNumber = 16964767780,
+                //Foreign Key
+                ContractID = 4
             };
 
             Customers p5 = new Customers
@@ -250,7 +278,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 FirstName = "Fred",
                 LastName = "Fratboy",
                 Email = "free@beer.io",
-                PhoneNumber = 16487205302
+                PhoneNumber = 16487205302,
+                //Foreign Key
+                ContractID = 5
             };
 
             Customers p6 = new Customers
@@ -259,7 +289,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 FirstName = "Sally",
                 LastName = "Spiritual",
                 Email = "yoga@mania.com",
-                PhoneNumber = 17154801567
+                PhoneNumber = 17154801567,
+                //Foreign Key
+                ContractID = 6
             };
 
             Customers p7 = new Customers
@@ -268,7 +300,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 FirstName = "Paula",
                 LastName = "Poser",
                 Email = "follow@insta.com",
-                PhoneNumber = 18187827055
+                PhoneNumber = 18187827055,
+                //Foreign Key
+                ContractID = 7
             };
 
             Customers p8 = new Customers
@@ -277,7 +311,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 FirstName = "Simon",
                 LastName = "Sideways",
                 Email = "fullsend@drift.com",
-                PhoneNumber = 12414558332
+                PhoneNumber = 12414558332,
+                //Foreign Key
+                ContractID = 8
             };
 
             Customers p9 = new Customers
@@ -286,7 +322,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 FirstName = "Chad",
                 LastName = "Charming",
                 Email = "shees@bro.com",
-                PhoneNumber = 12279330598
+                PhoneNumber = 12279330598,
+                //Foreign Key
+                ContractID = 9
             };
 
             Customers p10 = new Customers
@@ -295,7 +333,9 @@ namespace MQ7GIA_HFT_2021221.Data
                 FirstName = "Chris",
                 LastName = "Cosmic",
                 Email = "supersonic@speed.com",
-                PhoneNumber = 12093581825
+                PhoneNumber = 12093581825,
+                //Foreign Key
+                ContractID = 10
             };
 
 
@@ -319,7 +359,10 @@ namespace MQ7GIA_HFT_2021221.Data
                 ContractID = 1,
                 ContractType = "Lease",
                 ContractDate = DateTime.Parse("2020.05.12"),
-                ContractExpiryDate = DateTime.Parse("2023.12.15")
+                ContractExpiryDate = DateTime.Parse("2023.12.15"),
+                //Foreign Key
+                CustomerID = 1,
+                CarID = 1
             };
 
             Contracts con2 = new Contracts
@@ -327,7 +370,10 @@ namespace MQ7GIA_HFT_2021221.Data
                 ContractID = 2,
                 ContractType = "Sell",
                 ContractDate = DateTime.Parse("2020.05.12"),
-                ContractExpiryDate = null
+                ContractExpiryDate = null,
+                //Foreign Key
+                CustomerID = 2,
+                CarID = 2
             };
 
             Contracts con3 = new Contracts
@@ -335,7 +381,10 @@ namespace MQ7GIA_HFT_2021221.Data
                 ContractID = 3,
                 ContractType = "Lease",
                 ContractDate = DateTime.Parse("2021.06.08"),
-                ContractExpiryDate = DateTime.Parse("2023.04.02")
+                ContractExpiryDate = DateTime.Parse("2023.04.02"),
+                //Foreign Key
+                CustomerID = 3,
+                CarID = 3
             };
 
             Contracts con4 = new Contracts
@@ -343,7 +392,10 @@ namespace MQ7GIA_HFT_2021221.Data
                 ContractID = 4,
                 ContractType = "Sell",
                 ContractDate = DateTime.Parse("2020.01.17"),
-                ContractExpiryDate = null
+                ContractExpiryDate = null,
+                //Foreign Key
+                CustomerID = 4,
+                CarID = 4
             };
 
             Contracts con5 = new Contracts
@@ -351,7 +403,10 @@ namespace MQ7GIA_HFT_2021221.Data
                 ContractID = 5,
                 ContractType = "Lease",
                 ContractDate = DateTime.Parse("2019.05.07"),
-                ContractExpiryDate = DateTime.Parse("2020.02.20")
+                ContractExpiryDate = DateTime.Parse("2020.02.20"),
+                //Foreign Key
+                CustomerID = 5,
+                CarID = 5
             };
 
             Contracts con6 = new Contracts
@@ -359,7 +414,10 @@ namespace MQ7GIA_HFT_2021221.Data
                 ContractID = 6,
                 ContractType = "Sell",
                 ContractDate = DateTime.Parse("2021.10.08"),
-                ContractExpiryDate = null
+                ContractExpiryDate = null,
+                //Foreign Key
+                CustomerID = 6,
+                CarID = 6
             };
 
             Contracts con7 = new Contracts
@@ -367,7 +425,10 @@ namespace MQ7GIA_HFT_2021221.Data
                 ContractID = 7,
                 ContractType = "Lease",
                 ContractDate = DateTime.Parse("2021.09.01"),
-                ContractExpiryDate = DateTime.Parse("2021.12.15")
+                ContractExpiryDate = DateTime.Parse("2021.12.15"),
+                //Foreign Key
+                CustomerID = 7,
+                CarID = 7
             };
 
             Contracts con8 = new Contracts
@@ -375,7 +436,10 @@ namespace MQ7GIA_HFT_2021221.Data
                 ContractID = 8,
                 ContractType = "Sell",
                 ContractDate = DateTime.Parse("2021.10.21"),
-                ContractExpiryDate = null
+                ContractExpiryDate = null,
+                //Foreign Key
+                CustomerID = 8,
+                CarID = 8
             };
 
             Contracts con9 = new Contracts
@@ -383,7 +447,10 @@ namespace MQ7GIA_HFT_2021221.Data
                 ContractID = 9,
                 ContractType = "Lease",
                 ContractDate = DateTime.Parse("2018.07.17"),
-                ContractExpiryDate = DateTime.Parse("2022.11.25")
+                ContractExpiryDate = DateTime.Parse("2022.11.25"),
+                //Foreign Key
+                CustomerID = 9,
+                CarID = 9
             };
 
             Contracts con10 = new Contracts
@@ -391,7 +458,10 @@ namespace MQ7GIA_HFT_2021221.Data
                 ContractID = 10,
                 ContractType = "Sell",
                 ContractDate = DateTime.Parse("2017.01.30"),
-                ContractExpiryDate = null
+                ContractExpiryDate = null,
+                //Foreign Key
+                CustomerID = 10,
+                CarID = 10
             };
 
             #endregion
@@ -433,11 +503,12 @@ namespace MQ7GIA_HFT_2021221.Data
 
             //--------------------------------------------------------------//
 
-            modelBuilder.Entity<Cars>()
+          //Not needed
+            /* modelBuilder.Entity<Cars>()
                           .HasOne(car => car.Department)
                           .WithMany(department => department.CarCollection)
                           .HasForeignKey(car => car.DepartmentID)
-                          .OnDelete(DeleteBehavior.ClientSetNull);
+                          .OnDelete(DeleteBehavior.ClientSetNull;*/
 
             modelBuilder.Entity<Cars>().HasData(c1, c2, c3, c4, c5, c6, c7, c8, c9, c10);
             modelBuilder.Entity<Contracts>().HasData(con1, con2, con3, con4, con5, con6, con7, con8, con9, con10);

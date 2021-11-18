@@ -29,7 +29,6 @@ namespace MQ7GIA_HFT_2021221.Models
         [ForeignKey(nameof(Customer))]
         public int CustomerID { get; set; }
 
-
         [NotMapped]
         public virtual Cars Car { get; set; }
         [ForeignKey(nameof(Car))]

@@ -48,11 +48,10 @@ namespace MQ7GIA_HFT_2021221.Logic
 
         public List<Customers> CustomerOfCar(int CarID) // multitable
         {
-            ContractsLogic contractsLogic = new ContractsLogic(contractsRepository, customersRepository,carsRepository);
-            IList<Contracts> AllContracts = GetAllContracts();
+            IQueryable<Contracts> AllContracts = GetAllContracts().AsQueryable();
             int SearchedCustomerID = AllContracts.Where(contract => contract.CarID == CarID).FirstOrDefault().CustomerID;
 
-            return contractsLogic.customersRepository.GetAll().Where(customer => customer.CustomerID == SearchedCustomerID).ToList();
+            return customersRepository.GetAll().Where(customer => customer.CustomerID == SearchedCustomerID).ToList();
         }
         
         public DateTime? ContractExpireDateOfCustomer(int customerID)
@@ -77,12 +76,11 @@ namespace MQ7GIA_HFT_2021221.Logic
         public int TotalLeaseExpenditureForCustomer(int customerID) //multitable
         {
             List<Contracts> AllContracts = GetAllContracts().ToList();
-            ContractsLogic contractsLogic = new ContractsLogic(contractsRepository, customersRepository, carsRepository);
             Contracts SearchedContract = AllContracts.Where(contract => contract.CustomerID == customerID).FirstOrDefault();
 
             
             //Takes the number of mounths between the starting lease date and the lease expiry date and multiples it with the mounthly leasing price
-            return LeaseMonthDifference(SearchedContract.ContractDate, (DateTime)SearchedContract.ContractExpiryDate) * contractsLogic.carsRepository.GetOne(SearchedContract.CarID).LeasePrice;
+            return LeaseMonthDifference(SearchedContract.ContractDate, (DateTime)SearchedContract.ContractExpiryDate) * carsRepository.GetOne(SearchedContract.CarID).LeasePrice;
 
         }
 

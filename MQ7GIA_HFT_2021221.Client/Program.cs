@@ -6,7 +6,7 @@ namespace MQ7GIA_HFT_2021221.Client
 {
     class Program
     {
-        //Don't forget to untick .Data dependency on production build
+        //Don't forget to untick .Data  dependency on production build
         static void Main(string[] args)
         {
             CarDealershipContext ctx = new CarDealershipContext();

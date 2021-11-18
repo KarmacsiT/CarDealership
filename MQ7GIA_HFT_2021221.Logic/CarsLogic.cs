@@ -54,33 +54,7 @@ namespace MQ7GIA_HFT_2021221.Logic
         
         public List<Customers> CustomersWithoutWarranty() //multitable
         {
-            List<Cars> Allcars = GetAllCars().ToList();
-            CarsLogic carsLogic = new CarsLogic(carsRepository, contractsRepository, customersRepository);
-            int SearchedID = new int();
-            List<Contracts> AllContracts = carsLogic.contractsRepository.GetAll().ToList();
-            List<Customers> AllCustomers = carsLogic.customersRepository.GetAll().ToList();
-            List<Customers> SearchedCustomers = new List<Customers>();
-            
-            foreach (var car in Allcars)
-            {
-                if (car.Warranty == null)
-                {
-                    SearchedID = car.CarID;
-                }
-            }
-            
-        var WantedCustomerContracts = AllContracts.Where(contract => contract.CarID == SearchedID);
-            
-            foreach (var WantedCustomerContract in WantedCustomerContracts)
-            {
-                foreach (var customer in AllCustomers)
-                {
-                    if (customer.CustomerID == WantedCustomerContract.CustomerID)
-                    {
-                        SearchedCustomers.Add(customer);
-                    }
-                }
-            }
+           List<Customers> SearchedCustomers = customersRepository.GetAll().Where(customer => customer.Contract.Car.Warranty == null).ToList();
 
             return SearchedCustomers;
         }
