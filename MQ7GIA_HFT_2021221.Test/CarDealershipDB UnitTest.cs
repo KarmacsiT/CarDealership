@@ -270,5 +270,50 @@ namespace MQ7GIA_HFT_2021221.Test
 
             Assert.That(departmentsLogic.CarsOnThisDeparment(DepartmentID), Is.Not.Empty);
         }
-    }    
-}
+
+        [TestCase(1)]
+        public void CustomerOfCar_GetsCustomerSpecifiedInParameter(int customerID)
+        {
+            Mock<IContractsRepository> contractsRepoMock = new Mock<IContractsRepository>();
+            Mock<ICustomersRepository> customersRepoMock = new Mock<ICustomersRepository>();
+            Mock<ICarsRepository> carsRepoMock = new Mock<ICarsRepository>();
+            List<Contracts> ContractsFillerList = new List<Contracts>();
+            List<Customers> CustomersFillerList = new List<Customers>();
+            ContractsLogic contractsLogic = new ContractsLogic(contractsRepoMock.Object, customersRepoMock.Object,carsRepoMock.Object);
+           
+            #region Adding Mock Data
+            Contracts con1 = new Contracts
+            {
+                ContractID = 1,
+                ContractType = "Lease",
+                ContractDate = DateTime.Parse("2020.05.12"),
+                ContractExpiryDate = DateTime.Parse("2023.12.15"),
+                //Foreign Key
+                CarID = 1,
+                CustomerID = 1,
+            };
+
+            Customers p1 = new Customers
+            {
+                CustomerID = 1,
+                FirstName = "Test",
+                LastName = "Person",
+                Email = "place@holder.com",
+                PhoneNumber = 16505130514,
+                ContractID = 1,
+                //Navigation Property
+                Contract = con1
+            };
+
+            ContractsFillerList.Add(con1);
+            CustomersFillerList.Add(p1);
+            #endregion
+            
+            contractsRepoMock.Setup(x => x.GetAll()).Returns(ContractsFillerList.AsQueryable);
+            customersRepoMock.Setup(x => x.GetAll()).Returns(CustomersFillerList.AsQueryable);
+
+            Assert.That(contractsLogic.CustomerOfCar(customerID).FirstOrDefault().CustomerID, Is.EqualTo(customerID));
+        }
+    }
+}    
+
