@@ -50,11 +50,10 @@ namespace MQ7GIA_HFT_2021221.Logic
         }
 
         public List<Customers> CustomersBasedOnFuelType(string fuel_type) //multitable
-        { 
-            CustomersLogic customersLogic = new CustomersLogic(customersRepository, carsRepository,contractsRepository);
-            
-            List<Cars> AllCars = customersLogic.carsRepository.GetAll().ToList();
-            List<Contracts> AllContracts = customersLogic.contractsRepository.GetAll().ToList();
+        {
+             
+            List<Cars> AllCars = carsRepository.GetAll().ToList();
+            List<Contracts> AllContracts = contractsRepository.GetAll().ToList();
             
             List<Cars> FilteredCars = new List<Cars>();
             List<Contracts> FilteredContracts = new List<Contracts>();
@@ -62,7 +61,7 @@ namespace MQ7GIA_HFT_2021221.Logic
             
             string[] ValidFuelTypes = { "PETROL", "DIESEL", "ELECTRIC" };
             
-            //Checking whether fuel type input was correct
+                //Checking whether fuel type input was correct
             if (ValidFuelTypes.Contains(fuel_type.ToUpper()))
             {
                 //Getting the cars that runs on the specified fuel
@@ -81,21 +80,22 @@ namespace MQ7GIA_HFT_2021221.Logic
                     }
 
                 }
-                
+
                 //Adding Customers based on the Filteredcontracts CustomerID
                 foreach (var MatchingContract in FilteredContracts)
                 {
                     FilteredCustomers.Add(GetCustomerById(MatchingContract.CustomerID));
                 }
-                
+
                 return FilteredCustomers;
-            
+
+            }
+
+            else
+            {
+                throw new Exception("There is no such fuel type.");
             }
             
-            else //Failsafe in case fuel type input is missmanaged
-            {
-                throw new Exception("There is no such Fuel type.");
-            }    
         }
     }
 }

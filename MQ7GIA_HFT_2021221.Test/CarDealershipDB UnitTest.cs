@@ -323,7 +323,7 @@ namespace MQ7GIA_HFT_2021221.Test
             Mock<ICarsRepository> carsRepoMock = new Mock<ICarsRepository>();
             List<Contracts> ContractsFillerList = new List<Contracts>();
             ContractsLogic contractsLogic = new ContractsLogic(contractsRepoMock.Object, customersRepoMock.Object, carsRepoMock.Object);
-
+           
             #region Adding Mock Data
             Contracts con1 = new Contracts
             {
@@ -374,6 +374,17 @@ namespace MQ7GIA_HFT_2021221.Test
             carsRepoMock.Setup(x => x.GetOne(customerID)).Returns(c1);
             
             Assert.That(contractsLogic.TotalLeaseExpenditureForCustomer(customerID) == c1.LeasePrice * 2, Is.True);
+        }
+
+       [TestCase("Banana")]
+        public void CustomersBasedOnFuelType_ThrowsExceptionOnInvalidFuelTypes(string fuel_type)
+        {
+            Mock<IContractsRepository> contractsRepoMock = new Mock<IContractsRepository>();
+            Mock<ICustomersRepository> customersRepoMock = new Mock<ICustomersRepository>();
+            Mock<ICarsRepository> carsRepoMock = new Mock<ICarsRepository>();
+            CustomersLogic customersLogic = new CustomersLogic(customersRepoMock.Object, carsRepoMock.Object, contractsRepoMock.Object);
+            
+            Assert.That(() => customersLogic.CustomersBasedOnFuelType(fuel_type), Throws.Exception);
         }
     }
 }    
