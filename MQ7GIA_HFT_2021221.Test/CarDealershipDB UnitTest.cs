@@ -647,6 +647,29 @@ namespace MQ7GIA_HFT_2021221.Test
             CustomersDbSetMock.Verify(x => x.Add(It.IsAny<Customers>()), Times.Once);
             ctx_Mock.Verify(x => x.SaveChanges(), Times.Once());
         }
+
+        [Test]
+        public void DepartmentsRepository_AddDepartmentMethod_WorksAsIntended()
+        {
+            Mock<DbSet<Departments>> DepartmentsDbSetMock = new Mock<DbSet<Departments>>();
+            Mock<CarDealershipContext> ctx_Mock = new Mock<CarDealershipContext>();
+            ctx_Mock.Setup(x => x.Departments).Returns(DepartmentsDbSetMock.Object);
+            DepartmentsRepository departmentsRepository = new DepartmentsRepository(ctx_Mock.Object);
+
+            #region Filler Data
+            Departments d1 = new Departments
+            {
+                DepartmentID = 1,
+                DepartmentName = "LudicrousLease Landingcenter",
+                Address = "2789 Business St. 21"
+            };
+            #endregion
+
+            departmentsRepository.AddDepartment(d1.DepartmentID, d1.DepartmentName, d1.Address);
+
+            DepartmentsDbSetMock.Verify(x => x.Add(It.IsAny<Departments>()), Times.Once);
+            ctx_Mock.Verify(x => x.SaveChanges(), Times.Once());
+        }
     }
 }    
 
