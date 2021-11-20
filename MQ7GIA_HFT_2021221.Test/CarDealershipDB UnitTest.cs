@@ -93,7 +93,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 //Foreign Key
                 CarID = 1,
                 CustomerID = 1,
-                //Navigation Property (totaly bad practice)
+                //Navigation Property
                 Car = c1
 
             };
@@ -107,7 +107,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 //Foreign Key
                 CarID = 2,
                 CustomerID = 2,
-                //Navigation Property (totaly bad practice)
+                //Navigation Property
                 Car = c2
             };
 
@@ -120,7 +120,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 //Foreign Key
                 CarID = 3,
                 CustomerID = 3,
-                //Navigation Property (totaly bad practice)
+                //Navigation Property 
                 Car = c3
             };
 
@@ -132,7 +132,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 Email = "place@holder.com",
                 PhoneNumber = 16505130514,
                 ContractID = 1,
-                //Navigation Property (totaly bad practice)
+                //Navigation Property
                 Contract = con1
             };
 
@@ -144,7 +144,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 Email = "place@holder.com",
                 PhoneNumber = 18962358544,
                 ContractID = 2,
-                //Navigation Property (totaly bad practice)
+                //Navigation Property
                 Contract = con2
             };
 
@@ -156,7 +156,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 Email = "dolor@sit_amet.com",
                 PhoneNumber = 13052478786,
                 ContractID = 3,
-                //Navigation Property (totaly bad practice)
+                //Navigation Property
                 Contract = con3
             };
 
@@ -385,6 +385,177 @@ namespace MQ7GIA_HFT_2021221.Test
             CustomersLogic customersLogic = new CustomersLogic(customersRepoMock.Object, carsRepoMock.Object, contractsRepoMock.Object);
             
             Assert.That(() => customersLogic.CustomersBasedOnFuelType(fuel_type), Throws.Exception);
+        }
+
+        [TestCase("Diesel")]
+        public void CustomersBasedOnFuelType_Fetches_CustomersWithDieselCar(string fuel_type)
+        {
+            Mock<IContractsRepository> contractsRepoMock = new Mock<IContractsRepository>();
+            Mock<ICustomersRepository> customersRepoMock = new Mock<ICustomersRepository>();
+            Mock<ICarsRepository> carsRepoMock = new Mock<ICarsRepository>();
+            List<Cars> CarsFillerList = new List<Cars>();
+            List<Contracts> ContractsFillerList = new List<Contracts>();
+            CustomersLogic customersLogic = new CustomersLogic(customersRepoMock.Object, carsRepoMock.Object, contractsRepoMock.Object);
+           
+            //There are 2 Diesel cars in the test data, that are in posession of CustomerID: 1 and 2
+            #region Adding Mock Data 
+            Cars c1 = new Cars
+            {
+                CarID = 1,
+                CarBrand = "Some Brand",
+                CarModell = "Some Diesel Modell 1",
+                LicensePlate = "ASD-123",
+                Warranty = null,
+                EngineDisplacement = 1.9,
+                FuelType = "Diesel",
+                HorsePower = 140,
+                Transmission = "Automatic",
+                Mileage = 52489,
+                MOTUntil = DateTime.Parse("2022.03.30"),
+                LeasePrice = 1500000,
+                SellingPrice = 23500000,
+                DepartmentID = 1
+            };
+
+            Cars c2 = new Cars
+            {
+                CarID = 2,
+                CarBrand = "Some Brand",
+                CarModell = "Some Diesel Modell 2",
+                LicensePlate = "ASD-123",
+                Warranty = 1,
+                EngineDisplacement = 2.0,
+                FuelType = "Diesel",
+                HorsePower = 140,
+                Transmission = "Automatic",
+                Mileage = 52489,
+                MOTUntil = DateTime.Parse("2022.03.30"),
+                LeasePrice = 1500000,
+                SellingPrice = 23500000,
+                DepartmentID = 2
+            };
+
+            Cars c3 = new Cars
+            {
+                CarID = 3,
+                CarBrand = "Some Brand",
+                CarModell = "Some Petrol Modell 1",
+                LicensePlate = "ASD-123",
+                Warranty = null,
+                EngineDisplacement = 2.0,
+                FuelType = "Petrol",
+                HorsePower = 140,
+                Transmission = "Automatic",
+                Mileage = 52489,
+                MOTUntil = DateTime.Parse("2022.03.30"),
+                LeasePrice = 1500000,
+                SellingPrice = 23500000,
+                DepartmentID = 1
+            };
+
+            Cars c4 = new Cars
+            {
+                CarID = 4,
+                CarBrand = "Some Brand",
+                CarModell = "Some Electric Modell 1",
+                LicensePlate = "ASD-123",
+                Warranty = null,
+                EngineDisplacement = null,
+                FuelType = "Electric",
+                HorsePower = 140,
+                Transmission = "Automatic",
+                Mileage = 52489,
+                MOTUntil = DateTime.Parse("2022.03.30"),
+                LeasePrice = 1500000,
+                SellingPrice = 23500000,
+                DepartmentID = 1
+            };
+
+            Contracts con1 = new Contracts
+            {
+                ContractID = 1,
+                ContractType = "Lease",
+                ContractDate = DateTime.Parse("2020.05.12"),
+                ContractExpiryDate = DateTime.Parse("2023.12.15"),
+                //Foreign Key
+                CustomerID = 1,
+                CarID = 1
+            };
+
+            Contracts con2 = new Contracts
+            {
+                ContractID = 2,
+                ContractType = "Sell",
+                ContractDate = DateTime.Parse("2020.05.12"),
+                ContractExpiryDate = null,
+                //Foreign Key
+                CustomerID = 2,
+                CarID = 2
+            };
+
+            Contracts con3 = new Contracts
+            {
+                ContractID = 3,
+                ContractType = "Lease",
+                ContractDate = DateTime.Parse("2021.06.08"),
+                ContractExpiryDate = DateTime.Parse("2023.04.02"),
+                //Foreign Key
+                CustomerID = 3,
+                CarID = 3
+            };
+
+            Contracts con4 = new Contracts
+            {
+                ContractID = 4,
+                ContractType = "Sell",
+                ContractDate = DateTime.Parse("2020.01.17"),
+                ContractExpiryDate = null,
+                //Foreign Key
+                CustomerID = 4,
+                CarID = 4
+            };
+
+            Customers p1 = new Customers
+            {
+                CustomerID = 1,
+                FirstName = "Test",
+                LastName = "Person",
+                Email = "place@holder.com",
+                PhoneNumber = 16505130514,
+                ContractID = 1,
+                //Navigation Property
+                Contract = con1
+            };
+
+            Customers p2 = new Customers
+            {
+                CustomerID = 2,
+                FirstName = "Test",
+                LastName = "Person",
+                Email = "place@holder.com",
+                PhoneNumber = 16505130514,
+                ContractID = 2,
+                //Navigation Property
+                Contract = con2
+            };
+           
+            CarsFillerList.Add(c1);
+            CarsFillerList.Add(c2);
+            CarsFillerList.Add(c3);
+            CarsFillerList.Add(c4);
+            ContractsFillerList.Add(con1);
+            ContractsFillerList.Add(con2);
+            ContractsFillerList.Add(con3);
+            ContractsFillerList.Add(con4);
+            #endregion
+
+            carsRepoMock.Setup(x => x.GetAll()).Returns(CarsFillerList.AsQueryable);
+            contractsRepoMock.Setup(x => x.GetAll()).Returns(ContractsFillerList.AsQueryable);
+            customersRepoMock.Setup(x => x.GetOne(1)).Returns(p1);
+            customersRepoMock.Setup(x => x.GetOne(2)).Returns(p2);
+
+            Assert.That(customersLogic.CustomersBasedOnFuelType(fuel_type).FirstOrDefault().CustomerID == 1, Is.True);
+            Assert.That(customersLogic.CustomersBasedOnFuelType(fuel_type).Last().CustomerID == 2, Is.True);
         }
     }
 }    
