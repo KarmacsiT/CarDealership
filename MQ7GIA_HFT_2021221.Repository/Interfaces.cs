@@ -23,8 +23,8 @@ namespace MQ7GIA_HFT_2021221.Repository
     
     public interface ICarsRepository : IRepository<Cars>
     {
-        void AddCar(int id, string brand, string modell, string licensePlate, int warranty,
-            double engineDisplacement, string fuelType, int horsePower, string transmission, int mileage,
+        void AddCar(int id, string brand, string modell, string licensePlate, int? warranty,
+            double? engineDisplacement, string fuelType, int horsePower, string transmission, int mileage,
             string motUntil, int leasePrice, int sellingPrice);
         void ChangeNumericData(int id, string valueType, int newValue); //We can use this later for more specific functionality 
 

@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using Microsoft.EntityFrameworkCore;
+using Moq;
 using MQ7GIA_HFT_2021221.Data;
 using MQ7GIA_HFT_2021221.Logic;
 using MQ7GIA_HFT_2021221.Models;
@@ -556,6 +557,41 @@ namespace MQ7GIA_HFT_2021221.Test
 
             Assert.That(customersLogic.CustomersBasedOnFuelType(fuel_type).FirstOrDefault().CustomerID == 1, Is.True);
             Assert.That(customersLogic.CustomersBasedOnFuelType(fuel_type).Last().CustomerID == 2, Is.True);
+        }
+
+        [Test]
+        public void CarsRepository_AddCarsMethod_WorksAsIntended()
+        {
+            Mock<DbSet<Cars>> CarsDbSetMock = new Mock<DbSet<Cars>>();
+            Mock<CarDealershipContext> ctx_Mock = new Mock<CarDealershipContext>();
+            ctx_Mock.Setup(x => x.Cars).Returns(CarsDbSetMock.Object);
+            CarsRepository carsRepository = new CarsRepository(ctx_Mock.Object);
+
+            #region Filler Data
+            Cars c1 = new Cars
+            {
+                CarID = 1,
+                CarBrand = "Tesla",
+                CarModell = "Model Y",
+                LicensePlate = "MON-322",
+                Warranty = 3,
+                EngineDisplacement = null,
+                FuelType = "Electric",
+                HorsePower = 140,
+                Transmission = "Automatic",
+                Mileage = 52489,
+                MOTUntil = DateTime.Parse("2022.03.30"),
+                LeasePrice = 150,
+                SellingPrice = 23500000,
+                //Foreign Key
+                DepartmentID = 1
+            };
+            #endregion
+
+            carsRepository.AddCar(c1.CarID, c1.CarBrand, c1.CarModell, c1.LicensePlate, c1.Warranty, c1.EngineDisplacement, c1.FuelType, c1.HorsePower, c1.Transmission, c1.Mileage, c1.MOTUntil.ToString(), c1.LeasePrice, c1.SellingPrice);
+
+            CarsDbSetMock.Verify(x => x.Add(It.IsAny<Cars>()), Times.Once);
+            ctx_Mock.Verify(x => x.SaveChanges(), Times.Once());
         }
     }
 }    

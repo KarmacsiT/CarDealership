@@ -13,26 +13,50 @@ namespace MQ7GIA_HFT_2021221.Repository
     {
         public CarsRepository(CarDealershipContext cd_ctx) : base(cd_ctx) { /*Empty on purpose*/ }
 
-        public void AddCar(int id, string brand, string modell, string licensePlate, int warranty,
-            double engineDisplacement, string fuelType, int horsePower, string transmission, int mileage,
+        public void AddCar(int id, string brand, string modell, string licensePlate, int? warranty,
+            double? engineDisplacement, string fuelType, int horsePower, string transmission, int mileage,
             string motUntil, int leasePrice, int sellingPrice)
         {
-            cd_ctx.Cars.Add(new Cars
+            if (fuelType.ToUpper() == "Petrol".ToUpper() || fuelType.ToUpper() == "Diesel".ToUpper() || fuelType.ToUpper() == "Electric".ToUpper())
             {
-                CarID = id,
-                CarBrand = brand,
-                CarModell = modell,
-                LicensePlate = licensePlate,
-                Warranty = warranty,
-                EngineDisplacement = engineDisplacement,
-                FuelType = fuelType,
-                HorsePower = horsePower,
-                Transmission = transmission,
-                Mileage = mileage,
-                MOTUntil = DateTime.Parse(motUntil),
-                LeasePrice = leasePrice,
-                SellingPrice = sellingPrice
-            });
+                if (transmission.ToUpper() == "Automatic".ToUpper() || transmission.ToUpper() == "Manual".ToUpper())
+                {
+                    if (leasePrice < sellingPrice)
+                    {
+                        cd_ctx.Cars.Add(new Cars
+                        {
+                            CarID = id,
+                            CarBrand = brand,
+                            CarModell = modell,
+                            LicensePlate = licensePlate,
+                            Warranty = warranty,
+                            EngineDisplacement = engineDisplacement,
+                            FuelType = fuelType,
+                            HorsePower = horsePower,
+                            Transmission = transmission,
+                            Mileage = mileage,
+                            MOTUntil = DateTime.Parse(motUntil),
+                            LeasePrice = leasePrice,
+                            SellingPrice = sellingPrice
+                        });
+                    }
+                    
+                    else
+                    {
+                        throw new Exception("The mounthly LeasePrice can't be higher than the SellingPrice, thats irrational.");
+                    }  
+                }
+                
+                else
+                {
+                    throw new Exception("The inputed transmission is not valid or misspelled.");
+                }
+            }
+            
+            else
+            {
+                throw new Exception("The inputed fuel type is not valid or misspelled.");
+            } 
             
             cd_ctx.SaveChanges();
         }
