@@ -620,6 +620,33 @@ namespace MQ7GIA_HFT_2021221.Test
             ContractsDbSetMock.Verify(x => x.Add(It.IsAny<Contracts>()), Times.Once);
             ctx_Mock.Verify(x => x.SaveChanges(), Times.Once());
         }
+
+        [Test]
+        public void CustomersRepository_AddCustomerMethod_WorksAsIntended()
+        {
+            Mock<DbSet<Customers>> CustomersDbSetMock = new Mock<DbSet<Customers>>();
+            Mock<CarDealershipContext> ctx_Mock = new Mock<CarDealershipContext>();
+            ctx_Mock.Setup(x => x.Customers).Returns(CustomersDbSetMock.Object);
+            CustomersRepository customersRepository = new CustomersRepository(ctx_Mock.Object);
+
+            #region Filler Data
+            Customers p1 = new Customers
+            {
+                CustomerID = 1,
+                FirstName = "Elon",
+                LastName = "Musk",
+                Email = "dodgecoin@teslamotors.com",
+                PhoneNumber = 16505130514,
+                //Foreign Key
+                ContractID = 1
+            };
+            #endregion
+
+            customersRepository.AddCustomer(p1.CustomerID, p1.FirstName, p1.LastName, p1.Email, p1.PhoneNumber);
+
+            CustomersDbSetMock.Verify(x => x.Add(It.IsAny<Customers>()), Times.Once);
+            ctx_Mock.Verify(x => x.SaveChanges(), Times.Once());
+        }
     }
 }    
 
