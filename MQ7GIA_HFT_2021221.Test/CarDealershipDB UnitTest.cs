@@ -593,6 +593,33 @@ namespace MQ7GIA_HFT_2021221.Test
             CarsDbSetMock.Verify(x => x.Add(It.IsAny<Cars>()), Times.Once);
             ctx_Mock.Verify(x => x.SaveChanges(), Times.Once());
         }
+
+        [Test]
+        public void ContractsRepository_AddContractMethod_WorksAsIntended()
+        {
+            Mock<DbSet<Contracts>> ContractsDbSetMock = new Mock<DbSet<Contracts>>();
+            Mock<CarDealershipContext> ctx_Mock = new Mock<CarDealershipContext>();
+            ctx_Mock.Setup(x => x.Contracts).Returns(ContractsDbSetMock.Object);
+            ContractsRepository contractsRepository = new ContractsRepository(ctx_Mock.Object);
+
+            #region Filler Data
+            Contracts con1 = new Contracts
+            {
+                ContractID = 1,
+                ContractType = "Lease",
+                ContractDate = DateTime.Parse("2020.05.12"),
+                ContractExpiryDate = DateTime.Parse("2023.12.15"),
+                //Foreign Key
+                CustomerID = 1,
+                CarID = 1
+            };
+            #endregion
+
+            contractsRepository.AddContract(con1.ContractID, con1.ContractType, con1.ContractDate.ToString(), con1.ContractExpiryDate.ToString());
+
+            ContractsDbSetMock.Verify(x => x.Add(It.IsAny<Contracts>()), Times.Once);
+            ctx_Mock.Verify(x => x.SaveChanges(), Times.Once());
+        }
     }
 }    
 
