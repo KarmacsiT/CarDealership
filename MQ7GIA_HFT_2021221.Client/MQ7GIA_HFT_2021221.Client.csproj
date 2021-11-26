@@ -6,7 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MQ7GIA_HFT_2021221.Data\MQ7GIA_HFT_2021221.Data.csproj" />
+    <PackageReference Include="ConsoleMenu-simple" Version="2.4.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MQ7GIA_HFT_2021221.Models\MQ7GIA_HFT_2021221.Models.csproj" />
   </ItemGroup>
 
