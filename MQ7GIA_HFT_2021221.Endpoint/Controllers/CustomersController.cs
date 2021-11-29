@@ -32,19 +32,19 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
         }
 
         
-        [HttpPost("AddCustomer")] //error: 500
+        [HttpPost("AddCustomer")] //some fix
         public void CreateCustomerResult(Customers customer)
         {
-            _customersLogic.AddCustomer(customer.CustomerID, customer.FirstName,customer.LastName,customer.Email,customer.PhoneNumber);
+            _customersLogic.AddCustomer(customer.ContractId,customer.FirstName,customer.LastName,customer.Email,customer.PhoneNumber);
         }
 
-        [HttpPut("ChangeEmail")] //does not update
+        [HttpPut("ChangeEmail")] //works
         public void ChangeEmailResult(Customers customer)
         {
             _customersLogic.ChangeEmail(customer.CustomerID,customer.Email);
         }
 
-        [HttpPut("ChangePhoneNumber")] //does not update
+        [HttpPut("ChangePhoneNumber")] //works
         public void ChangePhonenumberResult(Customers customer)
         {
             _customersLogic.ChangePhonenumber(customer.CustomerID, customer.PhoneNumber);

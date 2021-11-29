@@ -132,7 +132,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 LastName = "Person",
                 Email = "place@holder.com",
                 PhoneNumber = 16505130514,
-                ContractID = 1,
+                ContractId = 1,
                 //Navigation Property
                 Contract = con1
             };
@@ -144,7 +144,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 LastName = "Holder",
                 Email = "place@holder.com",
                 PhoneNumber = 18962358544,
-                ContractID = 2,
+                ContractId = 2,
                 //Navigation Property
                 Contract = con2
             };
@@ -156,7 +156,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 LastName = "Ipsum",
                 Email = "dolor@sit_amet.com",
                 PhoneNumber = 13052478786,
-                ContractID = 3,
+                ContractId = 3,
                 //Navigation Property
                 Contract = con3
             };
@@ -301,7 +301,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 LastName = "Person",
                 Email = "place@holder.com",
                 PhoneNumber = 16505130514,
-                ContractID = 1,
+                ContractId = 1,
                 //Navigation Property
                 Contract = con1
             };
@@ -363,7 +363,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 LastName = "Person",
                 Email = "place@holder.com",
                 PhoneNumber = 16505130514,
-                ContractID = 1,
+                ContractId = 1,
                 //Navigation Property
                 Contract = con1
             };
@@ -523,7 +523,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 LastName = "Person",
                 Email = "place@holder.com",
                 PhoneNumber = 16505130514,
-                ContractID = 1,
+                ContractId = 1,
                 //Navigation Property
                 Contract = con1
             };
@@ -535,7 +535,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 LastName = "Person",
                 Email = "place@holder.com",
                 PhoneNumber = 16505130514,
-                ContractID = 2,
+                ContractId = 2,
                 //Navigation Property
                 Contract = con2
             };
@@ -638,7 +638,7 @@ namespace MQ7GIA_HFT_2021221.Test
                 Email = "dodgecoin@teslamotors.com",
                 PhoneNumber = 16505130514,
                 //Foreign Key
-                ContractID = 1
+                ContractId = 1
             };
             #endregion
 

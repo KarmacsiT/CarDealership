@@ -16,12 +16,12 @@ namespace MQ7GIA_HFT_2021221.Repository
         public void AddCustomer(int id, string firstName, string lastName, string email, long phoneNumber)
         {
             cd_ctx.Customers.Add(new Customers
-            {
-                CustomerID = id,
+            { 
                 FirstName = firstName,
                 LastName = lastName,
                 Email = email,
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                ContractId = id
             });
 
             cd_ctx.SaveChanges();

@@ -65,7 +65,7 @@ namespace MQ7GIA_HFT_2021221.Logic
             if (ValidFuelTypes.Contains(fuel_type.ToUpper()))
             {
                 //Getting the cars that runs on the specified fuel
-                FilteredCars = AllCars.Where(car => car.FuelType == fuel_type).ToList();
+                FilteredCars = AllCars.Where(car => car.FuelType.ToLower() == fuel_type).ToList();
 
                 //Fetching Contracts that belongs to the filtered cars
                 foreach (var car in FilteredCars)

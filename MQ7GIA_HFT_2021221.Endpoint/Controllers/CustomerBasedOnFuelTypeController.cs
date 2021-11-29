@@ -19,8 +19,8 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
             _customersLogic = customersLogic;
         }
 
-        [HttpGet("{fuel_type}")] //error: 415 unsupported media type
-         public List<Customers> CustomersBasedOnFuelTypeResult([FromBody]string fuel_type)
+        [HttpGet("{fuel_type}")] //works
+         public List<Customers> CustomersBasedOnFuelTypeResult(string fuel_type)
          {
                 return _customersLogic.CustomersBasedOnFuelType(fuel_type);
          }

@@ -31,7 +31,7 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
             return _carsLogic.GetCarById(id);
         }
 
-        [HttpGet("CustomersWithoutWarranty")] //LINQ Exception becasue of navigation property
+        [HttpGet("CustomersWithoutWarranty")] //works
         public List<Customers> CustomersWithoutWarrantyResult()
         {
             return _carsLogic.CustomersWithoutWarranty();
@@ -50,12 +50,10 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
         }
 
 
-        [HttpPut("ChangeNumericData")] //kinda works
-        public void ChangeNumericDataActionResult(Cars car)
+        [HttpPut("ChangeNumericData")] ////Modelsbe tenni egy helper objectet és úgy átvinni egy objectbe a három parametert
+        public void ChangeNumericDataActionResult(ChangeNumericDataHelper changeNumericDataHelper)
         {
-            string valuetype = "mileage";
-            int resultInt = 5000;
-            _carsLogic.ChangeNumericData(car.CarID, valuetype, resultInt);
+            _carsLogic.ChangeNumericData(changeNumericDataHelper.searchedID, changeNumericDataHelper.valueType, changeNumericDataHelper.newValue);
         }
 
         [HttpDelete("{id}")] //works

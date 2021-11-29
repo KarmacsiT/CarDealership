@@ -20,7 +20,7 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
         }
 
         [HttpGet("{id}")] //error: 415 unsupported media type
-        public List<Cars> CarsOnThisDeparmentResult([FromBody]int id)
+        public List<Cars> CarsOnThisDeparmentResult(int id)
         {
            return _departmentsLogic.CarsOnThisDeparment(id);
         }

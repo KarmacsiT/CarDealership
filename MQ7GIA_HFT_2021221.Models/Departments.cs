@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace MQ7GIA_HFT_2021221.Models
@@ -20,6 +21,7 @@ namespace MQ7GIA_HFT_2021221.Models
         public string Address { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public virtual ICollection<Cars> CarCollection { get; set; }
 
         public Departments()

@@ -17,10 +17,10 @@ namespace MQ7GIA_HFT_2021221.Repository
         {
             cd_ctx.Contracts.Add(new Contracts
             {
-                ContractID = id,
                 ContractType = type,
                 ContractDate = DateTime.Parse(date),
-                ContractExpiryDate = DateTime.Parse(expiryDate)
+                ContractExpiryDate = DateTime.Parse(expiryDate),
+                CarID = id
             });
             
             cd_ctx.SaveChanges();

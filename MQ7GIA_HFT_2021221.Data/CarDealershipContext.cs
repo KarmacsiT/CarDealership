@@ -34,6 +34,19 @@ namespace MQ7GIA_HFT_2021221.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Customers>()
+                      .HasOne(customer => customer.Contract)
+                      .WithOne(contract => contract.Customer)
+                      .HasForeignKey<Customers>(customer => customer.ContractId)
+                      .OnDelete(DeleteBehavior.ClientSetNull);
+
+
+            modelBuilder.Entity<Contracts>()
+                     .HasOne(contract => contract.Car)
+                     .WithOne(car => car.Contract)
+                     .HasForeignKey<Contracts>(contract => contract.CarID)
+                     .OnDelete(DeleteBehavior.ClientSetNull);
+            
             #region Data Seeding  
 
             Cars c1 = new Cars
@@ -236,7 +249,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 Email = "dodgecoin@teslamotors.com",
                 PhoneNumber = 16505130514,
                 //Foreign Key
-                ContractID = 1
+                ContractId = 1
             };
 
             Customers p2 = new Customers
@@ -247,7 +260,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 Email = "corporate@bs.com",
                 PhoneNumber = 18962358544,
                 //Foreign Key
-                ContractID = 2
+                ContractId = 2
             };
 
             Customers p3 = new Customers
@@ -258,7 +271,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 Email = "dolor@sit_amet.com",
                 PhoneNumber = 13052478786,
                 //Foreign Key
-                ContractID = 3
+                ContractId = 3
             };
 
             Customers p4 = new Customers
@@ -269,7 +282,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 Email = "speaking@manager.com",
                 PhoneNumber = 16964767780,
                 //Foreign Key
-                ContractID = 4
+                ContractId = 4
             };
 
             Customers p5 = new Customers
@@ -280,7 +293,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 Email = "free@beer.io",
                 PhoneNumber = 16487205302,
                 //Foreign Key
-                ContractID = 5
+                ContractId = 5
             };
 
             Customers p6 = new Customers
@@ -291,7 +304,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 Email = "yoga@mania.com",
                 PhoneNumber = 17154801567,
                 //Foreign Key
-                ContractID = 6
+                ContractId = 6
             };
 
             Customers p7 = new Customers
@@ -302,7 +315,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 Email = "follow@insta.com",
                 PhoneNumber = 18187827055,
                 //Foreign Key
-                ContractID = 7
+                ContractId = 7
             };
 
             Customers p8 = new Customers
@@ -313,7 +326,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 Email = "fullsend@drift.com",
                 PhoneNumber = 12414558332,
                 //Foreign Key
-                ContractID = 8
+                ContractId = 8
             };
 
             Customers p9 = new Customers
@@ -324,7 +337,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 Email = "shees@bro.com",
                 PhoneNumber = 12279330598,
                 //Foreign Key
-                ContractID = 9
+                ContractId = 9
             };
 
             Customers p10 = new Customers
@@ -335,7 +348,7 @@ namespace MQ7GIA_HFT_2021221.Data
                 Email = "supersonic@speed.com",
                 PhoneNumber = 12093581825,
                 //Foreign Key
-                ContractID = 10
+                ContractId = 10
             };
 
 
@@ -503,12 +516,7 @@ namespace MQ7GIA_HFT_2021221.Data
 
             //--------------------------------------------------------------//
 
-          //Not needed
-            /* modelBuilder.Entity<Cars>()
-                          .HasOne(car => car.Department)
-                          .WithMany(department => department.CarCollection)
-                          .HasForeignKey(car => car.DepartmentID)
-                          .OnDelete(DeleteBehavior.ClientSetNull;*/
+         
 
             modelBuilder.Entity<Cars>().HasData(c1, c2, c3, c4, c5, c6, c7, c8, c9, c10);
             modelBuilder.Entity<Contracts>().HasData(con1, con2, con3, con4, con5, con6, con7, con8, con9, con10);

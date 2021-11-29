@@ -105,13 +105,13 @@ namespace MQ7GIA_HFT_2021221.Client
             string licensePlate = Console.ReadLine();
             Console.WriteLine("\n Specify Warranty(measured in years):");
             int warranty = int.Parse(Console.ReadLine());
-            Console.WriteLine("\n Specify EngineDisplacement (Input Format: int.int => E.g.: 2.0):");
+            Console.WriteLine("\n Specify EngineDisplacement (Input Format: int.int => E.g.: 2,0):");
             double engineDisplacement = double.Parse(Console.ReadLine());
             Console.WriteLine("\n Specify Fuel Type (Petrol,Diesel,Electric):");
             string fuelType = Console.ReadLine();
             Console.WriteLine("\n Specify HorsePower:");
             int horsePower = int.Parse(Console.ReadLine());
-            Console.WriteLine("\nSpecify Transmission type (Automatic,Manual):");
+            Console.WriteLine("\n Specify Transmission type (Automatic,Manual):");
             string transmission = Console.ReadLine();
             Console.WriteLine("\n Specify Mileage (measured in km):");
             int mileage = int.Parse(Console.ReadLine());
@@ -274,7 +274,7 @@ namespace MQ7GIA_HFT_2021221.Client
             Console.ReadLine();
         }
 
-        static void ChangeNumericData() //Works somewhat
+        static void ChangeNumericData() //Modelsbe tenni egy helper objectet és úgy átvinni egy objectbe a három parametert
         {
             Console.WriteLine("Specify CarID where you want to change any numeric Data:");
             int id = int.Parse(Console.ReadLine());
@@ -303,7 +303,7 @@ namespace MQ7GIA_HFT_2021221.Client
                 if (name != "CarID" || name != null)
                 {
 
-                    if (propertyInfo.PropertyType == typeof(int) || propertyInfo.PropertyType == typeof(int?) || propertyInfo.PropertyType == typeof(double) || propertyInfo.PropertyType == typeof(double?))
+                    if (propertyInfo.PropertyType == typeof(int) || propertyInfo.PropertyType == typeof(int?))
                     {
                         Console.WriteLine($"-{name} => Type: {propertyInfo.PropertyType.Name}");
                     }
@@ -311,47 +311,16 @@ namespace MQ7GIA_HFT_2021221.Client
 
 
             }
+           
             Console.WriteLine("Specify the field you want to change:");
             string fieldName = Console.ReadLine();
             Console.WriteLine("Specify the new value of this field :");
             string fieldValue = Console.ReadLine();
-
-            foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(searchedCar))
-            {
-                string name = descriptor.Name;
-                object value = descriptor.GetValue(searchedCar);
-
-                switch (fieldName.ToLower())
-                {
-                    case "warranty":
-                        searchedCar.Warranty = int.Parse(fieldValue);
-                        break;
-                    case "enginedisplacement":
-                        searchedCar.EngineDisplacement = double.Parse(fieldValue);
-                        break;
-                    case "horsepower":
-                        searchedCar.Warranty = int.Parse(fieldValue);
-                        break;
-                    case "mileage":
-                        searchedCar.Warranty = int.Parse(fieldValue);
-                        break;
-                    case "leaseprice":
-                        searchedCar.Warranty = int.Parse(fieldValue);
-                        break;
-                    case "sellingprice":
-                        searchedCar.Warranty = int.Parse(fieldValue);
-                        break;
-                    case "departmentid":
-                        searchedCar.Warranty = int.Parse(fieldValue);
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-
+            
+            ChangeNumericDataHelper changeNumericDataHelper = new ChangeNumericDataHelper(id, fieldName, int.Parse(fieldValue));
+            
             HttpContent httpContent = new StringContent
-                (JsonConvert.SerializeObject(searchedCar),
+                (JsonConvert.SerializeObject(changeNumericDataHelper),
                 Encoding.UTF8,
                 "application/json");
 
@@ -464,6 +433,9 @@ namespace MQ7GIA_HFT_2021221.Client
                 CustomerID = int.Parse(id),
                 CarID = int.Parse(id)
             };
+
+            Console.WriteLine("\n You need to bind a new car for the newly printed contract:");
+            CreateCar();
 
             HttpClient httpClient = new HttpClient();
             HttpContent httpContent = new StringContent
@@ -709,7 +681,7 @@ namespace MQ7GIA_HFT_2021221.Client
             HttpClient httpClient = new HttpClient();
 
             var response = httpClient
-                .GetAsync("http://localhost:3851/contracts_noncrud/{TotalLeaseExpenditureForCustomerID}") //Sends get request
+                .GetAsync($"http://localhost:3851/contracts_noncrud/{TotalLeaseExpenditureForCustomerID}") //Sends get request
                 .GetAwaiter() //We get rid of the Task parameter in this fashion
                 .GetResult();
 
@@ -744,15 +716,17 @@ namespace MQ7GIA_HFT_2021221.Client
 
             Customers customer = new Customers()
             {
-                CustomerID = 11,
                 FirstName = firstname,
                 LastName = lastname,
                 Email = email,
                 PhoneNumber = long.Parse(phonenumber),
-                ContractID = int.Parse(contractid)
+                ContractId = int.Parse(contractid)
             };
-           
-                HttpClient httpClient = new HttpClient();
+
+            Console.WriteLine("\nWrite a new contract for the new customer:");
+            CreateContract();
+            
+            HttpClient httpClient = new HttpClient();
                 
             HttpContent httpContent = new StringContent
                     (JsonConvert.SerializeObject(customer),
@@ -765,7 +739,13 @@ namespace MQ7GIA_HFT_2021221.Client
                     .GetAwaiter()
                     .GetResult();
 
-                Console.WriteLine($"The {customer.FirstName} {customer.LastName} has been added to the Customer List.");
+            var responseContent = response  //We get JSON here
+                .Content
+                .ReadAsStringAsync() //Convert it to string
+                .GetAwaiter()
+                .GetResult();
+
+            Console.WriteLine($"The {customer.FirstName} {customer.LastName} has been added to the Customer List.");
                 Console.WriteLine("\nPress any key to continue..");
                 Console.ReadLine();
         }
@@ -983,7 +963,7 @@ namespace MQ7GIA_HFT_2021221.Client
             HttpClient httpClient = new HttpClient();
 
             var response = httpClient
-                .GetAsync("http://localhost:3851/customers_extra/{fuel_type}") //Sends get request
+                .GetAsync($"http://localhost:3851/customers_extra/{fuel_type}") //Sends get request
                 .GetAwaiter() //We get rid of the Task parameter in this fashion
                 .GetResult();
 
@@ -1209,7 +1189,7 @@ namespace MQ7GIA_HFT_2021221.Client
             HttpClient httpClient = new HttpClient();
 
             var response = httpClient
-                .GetAsync("http://localhost:3851/departments_extra/{id}") //Sends get request
+                .GetAsync($"http://localhost:3851/departments_extra/{id}") //Sends get request
                 .GetAwaiter() //We get rid of the Task parameter in this fashion
                 .GetResult();
 

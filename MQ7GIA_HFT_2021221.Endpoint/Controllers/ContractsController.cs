@@ -43,10 +43,10 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
             return _contractsLogic.CustomerOfCar(CustomerOfCarID);
         }
         
-        [HttpPost("AddContract")] //works
+        [HttpPost("AddContract")] //not working
         public void CreateContractResult(Contracts contract)
         {
-            _contractsLogic.AddContract(contract.ContractID, contract.ContractType, contract.ContractDate.ToString(), contract.ContractExpiryDate.ToString());
+            _contractsLogic.AddContract(contract.CarID, contract.ContractType, contract.ContractDate.ToString(), contract.ContractExpiryDate.ToString());
         }
 
         [HttpPut("ChangeContractExpiryDate")] //works
