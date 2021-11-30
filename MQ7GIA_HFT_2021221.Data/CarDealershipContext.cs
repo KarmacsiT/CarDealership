@@ -38,14 +38,14 @@ namespace MQ7GIA_HFT_2021221.Data
                       .HasOne(customer => customer.Contract)
                       .WithOne(contract => contract.Customer)
                       .HasForeignKey<Customers>(customer => customer.ContractId)
-                      .OnDelete(DeleteBehavior.ClientSetNull);
+                      .OnDelete(DeleteBehavior.Cascade);
 
 
             modelBuilder.Entity<Contracts>()
                      .HasOne(contract => contract.Car)
                      .WithOne(car => car.Contract)
                      .HasForeignKey<Contracts>(contract => contract.CarID)
-                     .OnDelete(DeleteBehavior.ClientSetNull);
+                     .OnDelete(DeleteBehavior.Cascade);
             
             #region Data Seeding  
 

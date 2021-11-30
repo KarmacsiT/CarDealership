@@ -36,12 +36,6 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
         {
             return _contractsLogic.ContractExpireDateOfCustomer(CustomerID);
         }
-
-        [HttpGet("{CustomerOfCarID}")] //works
-        public List<Customers> CustomerOfCarResult(int CustomerOfCarID)
-        {
-            return _contractsLogic.CustomerOfCar(CustomerOfCarID);
-        }
         
         [HttpPost("AddContract")] //not working
         public void CreateContractResult(Contracts contract)

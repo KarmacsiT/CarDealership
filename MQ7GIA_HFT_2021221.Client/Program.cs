@@ -15,8 +15,7 @@ namespace MQ7GIA_HFT_2021221.Client
     {
         static void Main(string[] args)
         {
-            //Extend Menus with other functionalities
-
+            #region Menu System
             var carsMenu = new ConsoleMenu()
                 .Add("=> Add new Car", () => CreateCar())
                 .Add("=> List all Cars", () => GetAllCars())
@@ -90,6 +89,7 @@ namespace MQ7GIA_HFT_2021221.Client
                 });
 
             mainMenu.Show();
+            #endregion
         }
 
         #region Cars CRUD
@@ -274,7 +274,7 @@ namespace MQ7GIA_HFT_2021221.Client
             Console.ReadLine();
         }
 
-        static void ChangeNumericData() //Modelsbe tenni egy helper objectet és úgy átvinni egy objectbe a három parametert
+        static void ChangeNumericData()
         {
             Console.WriteLine("Specify CarID where you want to change any numeric Data:");
             int id = int.Parse(Console.ReadLine());
@@ -376,6 +376,7 @@ namespace MQ7GIA_HFT_2021221.Client
             Console.ReadLine();
         }
         #endregion
+        
         #region Cars Non-CRUD
         static void GetCustomersWithoutWarranty() //Not working, LINQ Exception most likely nav. prop.
         {
@@ -413,6 +414,8 @@ namespace MQ7GIA_HFT_2021221.Client
             Console.ReadLine();
         }
         #endregion
+        
+        #region Contracts CRUD
         static void CreateContract()
         {
             Console.WriteLine("\n Specify Type:");
@@ -608,8 +611,9 @@ namespace MQ7GIA_HFT_2021221.Client
             Console.WriteLine("\nPress any key to continue..");
             Console.ReadLine();
         }
-
-        #region Non-Crud Contracts
+        #endregion
+        
+        #region Contracts Non-CRUD 
         static void CustomerOfCar()
         {
             Console.WriteLine("Specify the ID of the car who\'s customer you are intersted in:");
@@ -618,7 +622,7 @@ namespace MQ7GIA_HFT_2021221.Client
            HttpClient httpClientContract = new HttpClient();
 
             var Contractresponse = httpClientContract
-                    .GetAsync($"http://localhost:3851/contracts/AllContracts") //Sends get request
+                    .GetAsync($"http://localhost:3851/CustomerOfCar/{CustomerOfCarID}") //Sends get request
                     .GetAwaiter() //We get rid of the Task parameter in this fashion
                     .GetResult();
 
@@ -628,48 +632,13 @@ namespace MQ7GIA_HFT_2021221.Client
                 .GetAwaiter()
                 .GetResult();
 
-            var contracts = JsonConvert  //We get this command from Netonsoft.Json Nuget package
-                    .DeserializeObject<List<Contracts>>(responseContractContent);
+            var customers = JsonConvert  //We get this command from Netonsoft.Json Nuget package
+                    .DeserializeObject<List<Customers>>(responseContractContent);
 
-            Contracts SearchedContract = new Contracts();
-            foreach (var contract in contracts)
-            {
-                if (contract.CustomerID == CustomerOfCarID)
-                {
-                    SearchedContract = contract;
-                    break;
-                }
-            }
 
-            HttpClient httpClientCustomer = new HttpClient();
-            int id = SearchedContract.CustomerID;
-            
-            var response = httpClientCustomer
-                    .GetAsync($"http://localhost:3851/customers/{id}") //Sends get request
-                    .GetAwaiter() //We get rid of the Task parameter in this fashion
-                    .GetResult();
+            Console.WriteLine($"The customer of CarID {CustomerOfCarID} is {customers.First().FirstName} {customers.First().LastName}!");
 
-            var responseContent = response  //We get JSON here
-                .Content
-                .ReadAsStringAsync() //Convert it to string
-                .GetAwaiter()
-                .GetResult();
-
-            var searchedCustomer = JsonConvert  //We get this command from Netonsoft.Json Nuget package
-                    .DeserializeObject<Customers>(responseContent);
-
-            Console.WriteLine("The Customer of the Car:\n");
-            foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(searchedCustomer))
-            {
-                string name = descriptor.Name;
-                object value = descriptor.GetValue(searchedCustomer);
-                if (name != "Contract")
-                {
-                    Console.WriteLine($"{name}: {value}");
-                }
-
-            }
-
+           
             Console.WriteLine("\nPress any key to continue..");
             Console.ReadLine();
         }
@@ -701,7 +670,9 @@ namespace MQ7GIA_HFT_2021221.Client
 
         }
         #endregion
-        static void CreateCustomer()    //internal server error 500, Auto ID not working
+        
+        #region Customers CRUD
+        static void CreateCustomer()
         {
             Console.WriteLine("\n Specify FirstName:");
             string firstname = Console.ReadLine();
@@ -954,7 +925,9 @@ namespace MQ7GIA_HFT_2021221.Client
             Console.WriteLine("\nPress any key to continue..");
             Console.ReadLine();
         }
-
+        #endregion
+        
+        #region Customers Non-CRUD
         static void CustomersBasedOnFuelType()
         {
             Console.WriteLine("Specify the fuel type you want to search for (petrol,diesel,electric):");
@@ -996,6 +969,9 @@ namespace MQ7GIA_HFT_2021221.Client
             Console.ReadLine();
         
         }
+        #endregion
+        
+        #region Departments CRUD
         static void CreateDepartment()
         {
             Console.WriteLine("\n Specify DepartmentName:");
@@ -1181,6 +1157,9 @@ namespace MQ7GIA_HFT_2021221.Client
             Console.WriteLine("\nPress any key to continue..");
             Console.ReadLine();
         }
+        #endregion
+        
+        #region Departments Non-CRUD
         static void CarsOnThisDepartment()
         {
             Console.WriteLine("Specify DepartmentID, where you want to list the cars from:");
@@ -1221,5 +1200,6 @@ namespace MQ7GIA_HFT_2021221.Client
             Console.WriteLine("\nPress any key to continue..");
             Console.ReadLine();
         }
+        #endregion
     }
 }

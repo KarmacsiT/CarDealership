@@ -32,7 +32,7 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
         }
 
         
-        [HttpPost("AddCustomer")] //some fix
+        [HttpPost("AddCustomer")] //works
         public void CreateCustomerResult(Customers customer)
         {
             _customersLogic.AddCustomer(customer.ContractId,customer.FirstName,customer.LastName,customer.Email,customer.PhoneNumber);
