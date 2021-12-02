@@ -388,7 +388,7 @@ namespace MQ7GIA_HFT_2021221.Test
             Assert.That(() => customersLogic.CustomersBasedOnFuelType(fuel_type), Throws.Exception);
         }
 
-        [TestCase("Diesel")]
+        [TestCase("diesel")]
         public void CustomersBasedOnFuelType_Fetches_CustomersWithDieselCar(string fuel_type)
         {
             Mock<IContractsRepository> contractsRepoMock = new Mock<IContractsRepository>();
