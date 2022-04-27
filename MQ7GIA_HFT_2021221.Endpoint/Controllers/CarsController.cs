@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using MQ7GIA_HFT_2021221.Endpoint.Services;
 using MQ7GIA_HFT_2021221.Logic;
 using MQ7GIA_HFT_2021221.Models;
 using System;
@@ -12,14 +14,14 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
     [Route("cars")]
     public class CarsController : ControllerBase
     {
-        private readonly ICarsLogic _carsLogic;
+        ICarsLogic _carsLogic;
 
         public CarsController(ICarsLogic carsLogic)
         {
             _carsLogic = carsLogic;
         }
 
-        [HttpGet("AllCars")] //works
+        [HttpGet] //works  Originally was [HttpGet("AllCars")] 
         public IList<Cars> GetAllCarsResult()
         {
             return _carsLogic.GetAllCars();
@@ -37,7 +39,7 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
             return _carsLogic.CustomersWithoutWarranty();
         }
 
-        [HttpPost("AddCar")] //works
+        [HttpPost] //works Originally was [HttpPost]("AddCar")
         public void CreateCarResult(Cars car)
         {
             _carsLogic.AddCar(car.CarID, car.CarBrand, car.CarModell, car.LicensePlate, (int)car.Warranty, (double)car.EngineDisplacement, car.FuelType, car.HorsePower, car.Transmission, car.Mileage, car.MOTUntil.ToString(), car.LeasePrice, car.SellingPrice);

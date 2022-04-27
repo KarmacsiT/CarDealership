@@ -12,14 +12,14 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
     [Route("customers")]
     public class CustomersController : ControllerBase
     {
-        private readonly ICustomersLogic _customersLogic;
+        ICustomersLogic _customersLogic;
 
         public CustomersController(ICustomersLogic customersLogic)
         {
             _customersLogic = customersLogic;
         }
 
-        [HttpGet("AllCustomers")] //works
+        [HttpGet] //works Org.:HttpGet("AllCustomers")
         public IList<Customers> GetAllCustomersResult()
         {
             return _customersLogic.GetAllCustomers();
@@ -31,17 +31,17 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
             return _customersLogic.GetCustomerById(id);
         }
 
-        
-        [HttpPost("AddCustomer")] //works
+
+        [HttpPost] //works Org.:HttpPost("AddCustomer")
         public void CreateCustomerResult(Customers customer)
         {
-            _customersLogic.AddCustomer(customer.ContractId,customer.FirstName,customer.LastName,customer.Email,customer.PhoneNumber);
+            _customersLogic.AddCustomer(customer.ContractId, customer.FirstName, customer.LastName, customer.Email, customer.PhoneNumber);
         }
 
         [HttpPut("ChangeEmail")] //works
         public void ChangeEmailResult(Customers customer)
         {
-            _customersLogic.ChangeEmail(customer.CustomerID,customer.Email);
+            _customersLogic.ChangeEmail(customer.CustomerID, customer.Email);
         }
 
         [HttpPut("ChangePhoneNumber")] //works

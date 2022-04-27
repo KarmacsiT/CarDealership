@@ -1,0 +1,24 @@
+﻿<Window x:Class="CarDealershipDB.WpfClient.AddOrEditCustomerDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarDealershipDB.WpfClient"
+        mc:Ignorable="d"
+        Title="AddOrEditCustomerDialog" Height="450" Width="800">
+    <Grid>
+        <Label Content="Customer Specification Sheet" HorizontalAlignment="Center" Margin="0,23,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="First Name:" HorizontalAlignment="Left" Margin="259,85,0,0" VerticalAlignment="Top"/>
+        <Label Content="Last Name:" HorizontalAlignment="Left" Margin="260,116,0,0" VerticalAlignment="Top"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="260,147,0,0" VerticalAlignment="Top"/>
+        <Label Content="Phone Number: " HorizontalAlignment="Left" Margin="259,174,0,0" VerticalAlignment="Top"/>
+        <Label Content="Contract ID:" HorizontalAlignment="Left" Margin="260,200,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FirstNameTextbox" HorizontalAlignment="Left" Margin="400,93,0,0" Text="First Name of Customer" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+        <TextBox x:Name="LastNameTextBox" HorizontalAlignment="Left" Margin="400,120,0,0" Text="Last Name of Customer" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+        <TextBox x:Name="EmailTextBox"  HorizontalAlignment="Left" Margin="400,151,0,0" Text="Email address of Customer" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+        <TextBox x:Name="PhoneNumberTextBox" HorizontalAlignment="Left" Margin="400,178,0,0" Text="Phone Number of Customer" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+        <TextBox x:Name="ContractIDTextBox" HorizontalAlignment="Left" Margin="400,204,0,0" Text="Customer's Contract ID" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+        <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Center" VerticalAlignment="Top" Click="ConfirmButton_Click" Height="27" Width="136" Margin="0,247,0,0"/>
+        <Label Content="Note: Be aware the Contract with the inputed Contract ID should already exist BEFORE adding a customer with it's Contract ID" HorizontalAlignment="Center" Margin="0,285,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

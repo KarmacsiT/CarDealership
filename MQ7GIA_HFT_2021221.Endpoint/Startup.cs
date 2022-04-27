@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using MQ7GIA_HFT_2021221.Data;
+using MQ7GIA_HFT_2021221.Endpoint.Services;
 using MQ7GIA_HFT_2021221.Logic;
 using MQ7GIA_HFT_2021221.Repository;
 using System;
@@ -15,24 +17,28 @@ using System.Threading.Tasks;
 namespace MQ7GIA_HFT_2021221.Endpoint
 {
     public class Startup
-    {     
+    {
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
 
-            services.AddTransient<ICarsLogic,CarsLogic>();
+            services.AddTransient<ICarsLogic, CarsLogic>();
             services.AddTransient<ICarsRepository, CarsRepository>();
-            
+
             services.AddTransient<IContractsLogic, ContractsLogic>();
             services.AddTransient<IContractsRepository, ContractsRepository>();
-            
+
             services.AddTransient<ICustomersLogic, CustomersLogic>();
             services.AddTransient<ICustomersRepository, CustomersRepository>();
-            
+
             services.AddTransient<IDepartmentsLogic, DepartmentsLogic>();
             services.AddTransient<IDepartmentsRepository, DepartmentsRepository>();
 
             services.AddDbContext<CarDealershipContext>();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MQ7GIA_HFT_2021221.Endpoint", Version = "v1" }); //Swagger added
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +47,8 @@ namespace MQ7GIA_HFT_2021221.Endpoint
             if (env.IsDevelopment()) //Checks Environment name
             {
                 app.UseDeveloperExceptionPage(); //You may or may not want to show this to users,you can choose not to show it and create a main error page endpoint
+                app.UseSwagger(); //Swagger added
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MQ7GIA_HFT_2021221.Endpoint v1"));//Swagger added
             }
             else
             {
@@ -60,6 +68,12 @@ namespace MQ7GIA_HFT_2021221.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers(); //Maps controllers to path
+            });
+
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
             });
         }
     }

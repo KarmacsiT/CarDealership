@@ -19,7 +19,7 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
             _departmentsLogic = departmentsLogic;
         }
 
-        [HttpGet("AllDepartments")] //works
+        [HttpGet] //works origially:HttpGet("AllDepartments")
         public IList<Departments> GetAllDepartmentsResult()
         {
             return _departmentsLogic.GetAllDepartments();
@@ -31,13 +31,13 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
             return _departmentsLogic.GetDepartmentById(id);
         }
 
-        [HttpPost("AddDepartment")] //works
+        [HttpPost] //works originally: HttpPost("AddDepartment")
         public void CreateDepartmentResult(Departments department)
         {
             _departmentsLogic.AddDepartment(department.DepartmentID, department.DepartmentName, department.Address);
         }
 
-        [HttpPut("ChangeAddress")] //works
+        [HttpPut] //works originally:HttpPut("ChangeAddress")
         public void ChangeAddressResult(Departments department)
         {
             _departmentsLogic.ChangeAddress(department.DepartmentID, department.Address);

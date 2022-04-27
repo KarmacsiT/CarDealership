@@ -15,14 +15,28 @@ namespace MQ7GIA_HFT_2021221.Repository
 
         public void AddContract(int id, string type, string date, string expiryDate)
         {
+            DateTime value = new DateTime();
+            DateTime? actualExpiryDate = new DateTime();
+            bool isExpiryDateValid = DateTime.TryParse(expiryDate, out value);
+
+            if (isExpiryDateValid)
+            {
+                actualExpiryDate = value;
+            }
+
+            else
+            {
+                actualExpiryDate = null;
+            }
+
             cd_ctx.Contracts.Add(new Contracts
             {
                 ContractType = type,
                 ContractDate = DateTime.Parse(date),
-                ContractExpiryDate = DateTime.Parse(expiryDate),
+                ContractExpiryDate = actualExpiryDate,
                 CarID = id
             });
-            
+
             cd_ctx.SaveChanges();
         }
 
@@ -30,7 +44,7 @@ namespace MQ7GIA_HFT_2021221.Repository
         {
             var Contract = GetOne(id);
             Contract.ContractExpiryDate = DateTime.Parse(newContractExpiryDate);
-            
+
             cd_ctx.SaveChanges();
         }
 

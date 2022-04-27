@@ -28,6 +28,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{830A34
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebClient", "WebClient", "{23E6C4E0-1F6B-4CC7-90B7-B47C697C5053}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealershipDB.WpfClient", "CarDealershipDB.WpfClient\CarDealershipDB.WpfClient.csproj", "{1660A4FB-EED1-43E7-8B4C-874FFE6F1FC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +66,10 @@ Global
 		{D9C46540-8752-474E-AC74-8E476761118A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9C46540-8752-474E-AC74-8E476761118A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9C46540-8752-474E-AC74-8E476761118A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1660A4FB-EED1-43E7-8B4C-874FFE6F1FC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1660A4FB-EED1-43E7-8B4C-874FFE6F1FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1660A4FB-EED1-43E7-8B4C-874FFE6F1FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1660A4FB-EED1-43E7-8B4C-874FFE6F1FC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +82,7 @@ Global
 		{2A2D7DD0-36E0-4DE8-996A-B3C32EB3B4D0} = {F546EB79-2A07-4FE6-AADD-12E49292E762}
 		{14BD6282-A78D-4119-9ABB-0090B703AFCF} = {F546EB79-2A07-4FE6-AADD-12E49292E762}
 		{D9C46540-8752-474E-AC74-8E476761118A} = {F546EB79-2A07-4FE6-AADD-12E49292E762}
+		{1660A4FB-EED1-43E7-8B4C-874FFE6F1FC3} = {23E6C4E0-1F6B-4CC7-90B7-B47C697C5053}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {456D1C84-EF74-4C7F-9A22-70E37F95A71A}

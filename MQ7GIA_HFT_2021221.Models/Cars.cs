@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -49,13 +51,19 @@ namespace MQ7GIA_HFT_2021221.Models
         [Required]
         public int SellingPrice { get; set; } //Selling price in HUF(Ft) [based of Használtautó.hu data and common sense]
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         [NotMapped]
         [JsonIgnore]
         public virtual Departments Department { get; set; }
         [ForeignKey(nameof(Department))]
         public int DepartmentID { get; set; }
-    
+
         public virtual Contracts Contract { get; set; }
     }
 }

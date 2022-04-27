@@ -12,17 +12,17 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
     [Route("contracts")]
     public class ContractsController : ControllerBase
     {
-        private readonly IContractsLogic _contractsLogic;
+        IContractsLogic _contractsLogic;
 
         public ContractsController(IContractsLogic contractsLogic)
         {
             _contractsLogic = contractsLogic;
         }
 
-        [HttpGet("AllContracts")] //works
+        [HttpGet] //works Originally:HttpGet("AllContracts")
         public IList<Contracts> GetAllContractsResult()
         {
-           return _contractsLogic.GetAllContracts();
+            return _contractsLogic.GetAllContracts();
         }
 
         [HttpGet("{id}")] //works
@@ -36,8 +36,8 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
         {
             return _contractsLogic.ContractExpireDateOfCustomer(CustomerID);
         }
-        
-        [HttpPost("AddContract")] //not working
+
+        [HttpPost] //not working Originally: HttpPost("AddContract")
         public void CreateContractResult(Contracts contract)
         {
             _contractsLogic.AddContract(contract.CarID, contract.ContractType, contract.ContractDate.ToString(), contract.ContractExpiryDate.ToString());

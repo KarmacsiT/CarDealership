@@ -1,0 +1,68 @@
+﻿<Window x:Class="CarDealershipDB.WpfClient.ManageCarsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarDealershipDB.WpfClient" xmlns:ViewModels="clr-namespace:CarDealershipDB.WpfClient.ViewModels"
+        mc:Ignorable="d"
+        Title="ManageCarsView" Height="450" Width="800">
+    <Window.DataContext>
+        <ViewModels:ManageCarsViewViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="CarsListBox" ItemsSource="{Binding CarsObservableCollection}" SelectedItem="{Binding SelectedCar}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="Brand: " FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding CarBrand}"></TextBlock>
+                        <TextBlock Text=" "></TextBlock>
+                        <TextBlock Text="Modell: " FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding CarModell}"></TextBlock>
+                        <TextBlock Text=" "></TextBlock>
+                        <TextBlock Text="License Plate: " FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding LicensePlate}"></TextBlock>
+                        <TextBlock Text=" "></TextBlock>
+                        <TextBlock Text="Warranty: " FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding Warranty}"></TextBlock>
+                        <TextBlock Text=" "></TextBlock>
+                        <TextBlock Text="Engine Displacement: " FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding EngineDisplacement}"></TextBlock>
+                        <TextBlock Text=" "></TextBlock>
+                        <TextBlock Text="Fuel type: " FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding FuelType}"></TextBlock>
+                        <TextBlock Text=" "></TextBlock>
+                        <TextBlock Text="Horse Power: " FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding HorsePower}"></TextBlock>
+                        <TextBlock Text=" "></TextBlock>
+                        <TextBlock Text="Transmission: " FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding Transmission}"></TextBlock>
+                        <TextBlock Text=" "></TextBlock>
+                        <TextBlock Text="Mileage: " FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding Mileage}"></TextBlock>
+                        <TextBlock Text=" "></TextBlock>
+                        <TextBlock Text="MOT until: " FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding MOTUntil}"></TextBlock>
+                        <TextBlock Text=" "></TextBlock>
+                        <TextBlock Text="Lease Price: " FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding LeasePrice}"></TextBlock>
+                        <TextBlock Text=" "></TextBlock>
+                        <TextBlock Text="Selling Price: " FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding SellingPrice}"></TextBlock>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1">
+            <Button Content="Add Car" Command="{Binding AddCarCommand}" Margin="10" Padding="10"/>
+            <Button Content="Edit Car" Command="{Binding EditCarCommand}" Margin="10" Padding="10"/>
+            <Button Content="Delete Car" Command="{Binding DeleteCarCommand}" Margin="10" Padding="10"/>
+            <Button Content="Customer of Car" Command="{Binding CustomerOfCarCommand}" Margin="10" Padding="10"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
