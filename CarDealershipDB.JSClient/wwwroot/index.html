@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CarDealership Website</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1>CarDealership Manager Website</h1>
+
+    <h2>Divisions</h2>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openDivision(event, 'Cars')">Cars</button>
+        <button class="tablinks" onclick="openDivision(event, 'Contracts')">Contracts</button>
+        <button class="tablinks" onclick="openDivision(event, 'Customers')">Customers</button>
+        <button class="tablinks" onclick="openDivision(event, 'Departments')">Departments</button>
+    </div>
+
+    <div id="Cars" class="tabcontent">
+        <h3>Available Cars</h3>
+        <div id="formdiv">
+            <label>Brand:</label>
+            <input type="text" id="brandInput" />
+            <label>Model:</label>
+            <input type="text" id="modelInput" />
+            <label>License Plate (Format: AAA-123):</label>
+            <input type="text" id="licensePlateInput" />
+            <label>Warranty:</label>
+            <input type="text" id="warrantyInput" />
+            <label>Engine Displacement (Format: 1.0):</label>
+            <input type="text" id="engineDisplacementInput" />
+            <label>Fuel (Petrol, Diesel, Electric):</label>
+            <input type="text" id="fuelInput" />
+            <label>Horsepower:</label>
+            <input type="text" id="horsepowerInput" />
+            <label>Transmission (Automatic, Manual):</label>
+            <input type="text" id="transmissionInput" />
+            <label>Mileage:</label>
+            <input type="text" id="mileageInput" />
+            <label>MOT until (Format: YYYY-MM-DD):</label>
+            <input type="text" id="motUntilInput" />
+            <label>Lease Price:</label>
+            <input type="text" id="leasePriceInput" />
+            <label>Selling Price:</label>
+            <input type="text" id="sellingPriceInput" />
+            <button type="button" onclick="create()">Add Car</button>
+            <button type="button" onclick="reset()">Reset Fields</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>License Plate</th>
+                    <th>Warranty</th>
+                    <th>Engine Displacement</th>
+                    <th>Fuel</th>
+                    <th>Horsepower</th>
+                    <th>Transmission</th>
+                    <th>Mileage</th>
+                    <th>MOT</th>
+                    <th>Lease Price</th>
+                    <th>Sell Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="resultareaCars"></tbody>
+        </table>
+        <script src="script.js"></script>
+    </div>
+
+
+
+    <div id="Contracts" class="tabcontent">
+        <h3>Customer Contracts</h3>
+        <div id="formdiv">
+            <label>Contract Type (Sell, Lease):</label>
+            <input type="text" id="typeInput" />
+            <label>Signing Date (Format: YYYY-MM-DD):</label>
+            <input type="text" id="signingDateInput" />
+            <label>Expiry Date (Format: YYYY-MM-DD):</label>
+            <input type="text" id="expiryDateInput" />
+            <label>Customer ID:</label>
+            <input type="text" id="customerIDInput" />
+            <label>Car ID:</label>
+            <input type="text" id="carIDInput" />
+            <button type="button" onclick="create()">Add Contract</button>
+            <button type="button" onclick="reset()">Reset Fields</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Contract Type</th>
+                    <th>Signing Date</th>
+                    <th>Expiry Date</th>
+                    <th>Customer ID</th>
+                    <th>Car ID</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="resultareaContracts">
+            </tbody>
+        </table>
+        <script src="contractScript.js"></script>
+    </div>
+
+    <div id="Customers" class="tabcontent">
+        <h3>Customer List</h3>
+        <div id="formdiv">
+            <label>First Name:</label>
+            <input type="text" id="firstNameInput" />
+            <label>Last Name:</label>
+            <input type="text" id="lastNameInput" />
+            <label>Email:</label>
+            <input type="text" id="emailInput" />
+            <label>Phone number:</label>
+            <input type="text" id="phoneNumberInput" />
+            <label>Contract ID:</label>
+            <input type="text" id="contractIDInput" />
+            <button type="button" onclick="create()">Add Customer</button>
+            <button type="button" onclick="reset()">Reset Fields</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Contract ID</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="resultareaCustomers">
+            </tbody>
+        </table>
+        <script src="customerScript.js"></script>
+    </div>
+
+    <div id="Departments" class="tabcontent">
+        <h3>Department Backlog</h3>
+        <div id="formdiv">
+            <label>Deparment Name:</label>
+            <input type="text" id="deparmentNameInput" />
+            <label>Address:</label>
+            <input type="text" id="addressInput" />
+            <button type="button" onclick="create()">Add Department</button>
+            <button type="button" onclick="reset()">Reset Fields</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Department Name</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="resultareaDepartments">
+            </tbody>
+        </table>
+        <script src="departmentScript.js"></script>
+    </div>
+</body>
+</html>

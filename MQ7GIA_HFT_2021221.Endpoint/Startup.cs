@@ -59,7 +59,12 @@ namespace MQ7GIA_HFT_2021221.Endpoint
 
             //The order of function calls MATTERS, it's not coincidence
             app.UseHttpsRedirection(); //Handle redirections
-            app.UseStaticFiles();
+
+            app.UseCors(x => x
+                   .AllowCredentials()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader()
+                   .WithOrigins("http://localhost:41003"));  //Settings according to CORS policy
 
             app.UseRouting(); //Specifies Path
 
@@ -75,6 +80,7 @@ namespace MQ7GIA_HFT_2021221.Endpoint
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

@@ -38,7 +38,7 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
         }
 
         [HttpPost] //not working Originally: HttpPost("AddContract")
-        public void CreateContractResult(Contracts contract)
+        public void CreateContractResult([FromBody] Contracts contract)
         {
             _contractsLogic.AddContract(contract.CarID, contract.ContractType, contract.ContractDate.ToString(), contract.ContractExpiryDate.ToString());
         }

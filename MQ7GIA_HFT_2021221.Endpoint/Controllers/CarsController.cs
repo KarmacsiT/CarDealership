@@ -40,7 +40,7 @@ namespace MQ7GIA_HFT_2021221.Endpoint.Controllers
         }
 
         [HttpPost] //works Originally was [HttpPost]("AddCar")
-        public void CreateCarResult(Cars car)
+        public void CreateCarResult([FromBody] Cars car)
         {
             _carsLogic.AddCar(car.CarID, car.CarBrand, car.CarModell, car.LicensePlate, (int)car.Warranty, (double)car.EngineDisplacement, car.FuelType, car.HorsePower, car.Transmission, car.Mileage, car.MOTUntil.ToString(), car.LeasePrice, car.SellingPrice);
         }
